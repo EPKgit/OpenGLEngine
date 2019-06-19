@@ -1,0 +1,5 @@
+﻿  Building Custom Rule E:/GitHub/OpenGLEngine/glfw-3.3/tests/CMakeLists.txt
+  joysticks.c
+  glad_gl.c
+  Generating Code...
+  joysticks.vcxproj -> E:\GitHub\OpenGLEngine\glfw-3.3\build\tests\Debug\joysticks.exe

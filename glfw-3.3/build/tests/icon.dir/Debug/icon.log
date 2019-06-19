@@ -1,0 +1,5 @@
+﻿  Building Custom Rule E:/GitHub/OpenGLEngine/glfw-3.3/tests/CMakeLists.txt
+  icon.c
+  glad_gl.c
+  Generating Code...
+  icon.vcxproj -> E:\GitHub\OpenGLEngine\glfw-3.3\build\tests\Debug\icon.exe

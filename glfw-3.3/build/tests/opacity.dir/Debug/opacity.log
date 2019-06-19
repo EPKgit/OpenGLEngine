@@ -1,0 +1,5 @@
+﻿  Building Custom Rule E:/GitHub/OpenGLEngine/glfw-3.3/tests/CMakeLists.txt
+  opacity.c
+  glad_gl.c
+  Generating Code...
+  opacity.vcxproj -> E:\GitHub\OpenGLEngine\glfw-3.3\build\tests\Debug\opacity.exe

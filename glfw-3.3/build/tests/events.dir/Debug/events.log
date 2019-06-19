@@ -1,0 +1,6 @@
+﻿  Building Custom Rule E:/GitHub/OpenGLEngine/glfw-3.3/tests/CMakeLists.txt
+  events.c
+  getopt.c
+  glad_gl.c
+  Generating Code...
+  events.vcxproj -> E:\GitHub\OpenGLEngine\glfw-3.3\build\tests\Debug\events.exe

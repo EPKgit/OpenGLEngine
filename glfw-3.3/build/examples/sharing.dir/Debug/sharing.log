@@ -1,0 +1,5 @@
+﻿  Building Custom Rule E:/GitHub/OpenGLEngine/glfw-3.3/examples/CMakeLists.txt
+  sharing.c
+  glad_gl.c
+  Generating Code...
+  sharing.vcxproj -> E:\GitHub\OpenGLEngine\glfw-3.3\build\examples\Debug\sharing.exe

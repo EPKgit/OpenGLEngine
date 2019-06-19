@@ -1,0 +1,7 @@
+﻿  Building Custom Rule E:/GitHub/OpenGLEngine/glfw-3.3/examples/CMakeLists.txt
+  particles.c
+  tinycthread.c
+  getopt.c
+  glad_gl.c
+  Generating Code...
+  particles.vcxproj -> E:\GitHub\OpenGLEngine\glfw-3.3\build\examples\Debug\particles.exe

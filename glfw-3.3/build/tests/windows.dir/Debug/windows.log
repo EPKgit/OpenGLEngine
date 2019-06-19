@@ -1,0 +1,6 @@
+﻿  Building Custom Rule E:/GitHub/OpenGLEngine/glfw-3.3/tests/CMakeLists.txt
+  windows.c
+  getopt.c
+  glad_gl.c
+  Generating Code...
+  windows.vcxproj -> E:\GitHub\OpenGLEngine\glfw-3.3\build\tests\Debug\windows.exe

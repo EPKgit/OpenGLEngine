@@ -1,0 +1,5 @@
+﻿  Building Custom Rule E:/GitHub/OpenGLEngine/glfw-3.3/tests/CMakeLists.txt
+  title.c
+  glad_gl.c
+  Generating Code...
+  title.vcxproj -> E:\GitHub\OpenGLEngine\glfw-3.3\build\tests\Debug\title.exe

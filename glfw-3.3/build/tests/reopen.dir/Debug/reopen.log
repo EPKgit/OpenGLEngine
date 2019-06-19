@@ -1,0 +1,5 @@
+﻿  Building Custom Rule E:/GitHub/OpenGLEngine/glfw-3.3/tests/CMakeLists.txt
+  reopen.c
+  glad_gl.c
+  Generating Code...
+  reopen.vcxproj -> E:\GitHub\OpenGLEngine\glfw-3.3\build\tests\Debug\reopen.exe

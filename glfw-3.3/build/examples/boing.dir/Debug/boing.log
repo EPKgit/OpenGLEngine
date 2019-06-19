@@ -1,0 +1,5 @@
+﻿  Building Custom Rule E:/GitHub/OpenGLEngine/glfw-3.3/examples/CMakeLists.txt
+  boing.c
+  glad_gl.c
+  Generating Code...
+  boing.vcxproj -> E:\GitHub\OpenGLEngine\glfw-3.3\build\examples\Debug\boing.exe

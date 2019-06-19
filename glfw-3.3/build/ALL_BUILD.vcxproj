@@ -1,0 +1,352 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="MinSizeRel|Win32">
+      <Configuration>MinSizeRel</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|Win32">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{7AA235D1-A7B9-3E51-9553-D18AA4CFEF76}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <Platform>Win32</Platform>
+    <ProjectName>ALL_BUILD</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Midl>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Midl>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">
+    <Midl>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">
+    <Midl>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="E:\GitHub\OpenGLEngine\glfw-3.3\CMakeLists.txt">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Building Custom Rule E:/GitHub/OpenGLEngine/glfw-3.3/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">setlocal
+"C:\Program Files (x86)\Canon\Easy-WebPrint EX\bin\cmake.exe" -SE:/GitHub/OpenGLEngine/glfw-3.3 -BE:/GitHub/OpenGLEngine/glfw-3.3/build --check-stamp-file E:/GitHub/OpenGLEngine/glfw-3.3/build/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:\Program Files (x86)\Canon\Easy-WebPrint EX\share\cmake-3.15\Modules\BasicConfigVersion-SameMajorVersion.cmake.in;C:\Program Files (x86)\Canon\Easy-WebPrint EX\share\cmake-3.15\Modules\CMakeCInformation.cmake;C:\Program Files (x86)\Canon\Easy-WebPrint EX\share\cmake-3.15\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files (x86)\Canon\Easy-WebPrint EX\share\cmake-3.15\Modules\CMakeGenericSystem.cmake;C:\Program Files (x86)\Canon\Easy-WebPrint EX\share\cmake-3.15\Modules\CMakeInitializeConfigs.cmake;C:\Program Files (x86)\Canon\Easy-WebPrint EX\share\cmake-3.15\Modules\CMakeLanguageInformation.cmake;C:\Program Files (x86)\Canon\Easy-WebPrint EX\share\cmake-3.15\Modules\CMakePackageConfigHelpers.cmake;C:\Program Files (x86)\Canon\Easy-WebPrint EX\share\cmake-3.15\Modules\CMakeRCInformation.cmake;C:\Program Files (x86)\Canon\Easy-WebPrint EX\share\cmake-3.15\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files (x86)\Canon\Easy-WebPrint EX\share\cmake-3.15\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files (x86)\Canon\Easy-WebPrint EX\share\cmake-3.15\Modules\CheckCSourceCompiles.cmake;C:\Program Files (x86)\Canon\Easy-WebPrint EX\share\cmake-3.15\Modules\CheckIncludeFile.cmake;C:\Program Files (x86)\Canon\Easy-WebPrint EX\share\cmake-3.15\Modules\CheckLibraryExists.cmake;C:\Program Files (x86)\Canon\Easy-WebPrint EX\share\cmake-3.15\Modules\Compiler\MSVC-C.cmake;C:\Program Files (x86)\Canon\Easy-WebPrint EX\share\cmake-3.15\Modules\FindDoxygen.cmake;C:\Program Files (x86)\Canon\Easy-WebPrint EX\share\cmake-3.15\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files (x86)\Canon\Easy-WebPrint EX\share\cmake-3.15\Modules\FindPackageMessage.cmake;C:\Program Files (x86)\Canon\Easy-WebPrint EX\share\cmake-3.15\Modules\FindThreads.cmake;C:\Program Files (x86)\Canon\Easy-WebPrint EX\share\cmake-3.15\Modules\GNUInstallDirs.cmake;C:\Program Files (x86)\Canon\Easy-WebPrint EX\share\cmake-3.15\Modules\Platform\Windows-MSVC-C.cmake;C:\Program Files (x86)\Canon\Easy-WebPrint EX\share\cmake-3.15\Modules\Platform\Windows-MSVC.cmake;C:\Program Files (x86)\Canon\Easy-WebPrint EX\share\cmake-3.15\Modules\Platform\Windows.cmake;C:\Program Files (x86)\Canon\Easy-WebPrint EX\share\cmake-3.15\Modules\Platform\WindowsPaths.cmake;C:\Program Files (x86)\Canon\Easy-WebPrint EX\share\cmake-3.15\Modules\WriteBasicConfigVersionFile.cmake;E:\GitHub\OpenGLEngine\glfw-3.3\build\CMakeFiles\3.15.0-rc1\CMakeCCompiler.cmake;E:\GitHub\OpenGLEngine\glfw-3.3\build\CMakeFiles\3.15.0-rc1\CMakeRCCompiler.cmake;E:\GitHub\OpenGLEngine\glfw-3.3\build\CMakeFiles\3.15.0-rc1\CMakeSystem.cmake;E:\GitHub\OpenGLEngine\glfw-3.3\cmake_uninstall.cmake.in;E:\GitHub\OpenGLEngine\glfw-3.3\src\glfw3.pc.in;E:\GitHub\OpenGLEngine\glfw-3.3\src\glfw3Config.cmake.in;E:\GitHub\OpenGLEngine\glfw-3.3\src\glfw_config.h.in;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">E:\GitHub\OpenGLEngine\glfw-3.3\build\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Building Custom Rule E:/GitHub/OpenGLEngine/glfw-3.3/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">setlocal
+"C:\Program Files (x86)\Canon\Easy-WebPrint EX\bin\cmake.exe" -SE:/GitHub/OpenGLEngine/glfw-3.3 -BE:/GitHub/OpenGLEngine/glfw-3.3/build --check-stamp-file E:/GitHub/OpenGLEngine/glfw-3.3/build/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:\Program Files (x86)\Canon\Easy-WebPrint EX\share\cmake-3.15\Modules\BasicConfigVersion-SameMajorVersion.cmake.in;C:\Program Files (x86)\Canon\Easy-WebPrint EX\share\cmake-3.15\Modules\CMakeCInformation.cmake;C:\Program Files (x86)\Canon\Easy-WebPrint EX\share\cmake-3.15\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files (x86)\Canon\Easy-WebPrint EX\share\cmake-3.15\Modules\CMakeGenericSystem.cmake;C:\Program Files (x86)\Canon\Easy-WebPrint EX\share\cmake-3.15\Modules\CMakeInitializeConfigs.cmake;C:\Program Files (x86)\Canon\Easy-WebPrint EX\share\cmake-3.15\Modules\CMakeLanguageInformation.cmake;C:\Program Files (x86)\Canon\Easy-WebPrint EX\share\cmake-3.15\Modules\CMakePackageConfigHelpers.cmake;C:\Program Files (x86)\Canon\Easy-WebPrint EX\share\cmake-3.15\Modules\CMakeRCInformation.cmake;C:\Program Files (x86)\Canon\Easy-WebPrint EX\share\cmake-3.15\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files (x86)\Canon\Easy-WebPrint EX\share\cmake-3.15\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files (x86)\Canon\Easy-WebPrint EX\share\cmake-3.15\Modules\CheckCSourceCompiles.cmake;C:\Program Files (x86)\Canon\Easy-WebPrint EX\share\cmake-3.15\Modules\CheckIncludeFile.cmake;C:\Program Files (x86)\Canon\Easy-WebPrint EX\share\cmake-3.15\Modules\CheckLibraryExists.cmake;C:\Program Files (x86)\Canon\Easy-WebPrint EX\share\cmake-3.15\Modules\Compiler\MSVC-C.cmake;C:\Program Files (x86)\Canon\Easy-WebPrint EX\share\cmake-3.15\Modules\FindDoxygen.cmake;C:\Program Files (x86)\Canon\Easy-WebPrint EX\share\cmake-3.15\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files (x86)\Canon\Easy-WebPrint EX\share\cmake-3.15\Modules\FindPackageMessage.cmake;C:\Program Files (x86)\Canon\Easy-WebPrint EX\share\cmake-3.15\Modules\FindThreads.cmake;C:\Program Files (x86)\Canon\Easy-WebPrint EX\share\cmake-3.15\Modules\GNUInstallDirs.cmake;C:\Program Files (x86)\Canon\Easy-WebPrint EX\share\cmake-3.15\Modules\Platform\Windows-MSVC-C.cmake;C:\Program Files (x86)\Canon\Easy-WebPrint EX\share\cmake-3.15\Modules\Platform\Windows-MSVC.cmake;C:\Program Files (x86)\Canon\Easy-WebPrint EX\share\cmake-3.15\Modules\Platform\Windows.cmake;C:\Program Files (x86)\Canon\Easy-WebPrint EX\share\cmake-3.15\Modules\Platform\WindowsPaths.cmake;C:\Program Files (x86)\Canon\Easy-WebPrint EX\share\cmake-3.15\Modules\WriteBasicConfigVersionFile.cmake;E:\GitHub\OpenGLEngine\glfw-3.3\build\CMakeFiles\3.15.0-rc1\CMakeCCompiler.cmake;E:\GitHub\OpenGLEngine\glfw-3.3\build\CMakeFiles\3.15.0-rc1\CMakeRCCompiler.cmake;E:\GitHub\OpenGLEngine\glfw-3.3\build\CMakeFiles\3.15.0-rc1\CMakeSystem.cmake;E:\GitHub\OpenGLEngine\glfw-3.3\cmake_uninstall.cmake.in;E:\GitHub\OpenGLEngine\glfw-3.3\src\glfw3.pc.in;E:\GitHub\OpenGLEngine\glfw-3.3\src\glfw3Config.cmake.in;E:\GitHub\OpenGLEngine\glfw-3.3\src\glfw_config.h.in;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">E:\GitHub\OpenGLEngine\glfw-3.3\build\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">Building Custom Rule E:/GitHub/OpenGLEngine/glfw-3.3/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">setlocal
+"C:\Program Files (x86)\Canon\Easy-WebPrint EX\bin\cmake.exe" -SE:/GitHub/OpenGLEngine/glfw-3.3 -BE:/GitHub/OpenGLEngine/glfw-3.3/build --check-stamp-file E:/GitHub/OpenGLEngine/glfw-3.3/build/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">C:\Program Files (x86)\Canon\Easy-WebPrint EX\share\cmake-3.15\Modules\BasicConfigVersion-SameMajorVersion.cmake.in;C:\Program Files (x86)\Canon\Easy-WebPrint EX\share\cmake-3.15\Modules\CMakeCInformation.cmake;C:\Program Files (x86)\Canon\Easy-WebPrint EX\share\cmake-3.15\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files (x86)\Canon\Easy-WebPrint EX\share\cmake-3.15\Modules\CMakeGenericSystem.cmake;C:\Program Files (x86)\Canon\Easy-WebPrint EX\share\cmake-3.15\Modules\CMakeInitializeConfigs.cmake;C:\Program Files (x86)\Canon\Easy-WebPrint EX\share\cmake-3.15\Modules\CMakeLanguageInformation.cmake;C:\Program Files (x86)\Canon\Easy-WebPrint EX\share\cmake-3.15\Modules\CMakePackageConfigHelpers.cmake;C:\Program Files (x86)\Canon\Easy-WebPrint EX\share\cmake-3.15\Modules\CMakeRCInformation.cmake;C:\Program Files (x86)\Canon\Easy-WebPrint EX\share\cmake-3.15\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files (x86)\Canon\Easy-WebPrint EX\share\cmake-3.15\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files (x86)\Canon\Easy-WebPrint EX\share\cmake-3.15\Modules\CheckCSourceCompiles.cmake;C:\Program Files (x86)\Canon\Easy-WebPrint EX\share\cmake-3.15\Modules\CheckIncludeFile.cmake;C:\Program Files (x86)\Canon\Easy-WebPrint EX\share\cmake-3.15\Modules\CheckLibraryExists.cmake;C:\Program Files (x86)\Canon\Easy-WebPrint EX\share\cmake-3.15\Modules\Compiler\MSVC-C.cmake;C:\Program Files (x86)\Canon\Easy-WebPrint EX\share\cmake-3.15\Modules\FindDoxygen.cmake;C:\Program Files (x86)\Canon\Easy-WebPrint EX\share\cmake-3.15\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files (x86)\Canon\Easy-WebPrint EX\share\cmake-3.15\Modules\FindPackageMessage.cmake;C:\Program Files (x86)\Canon\Easy-WebPrint EX\share\cmake-3.15\Modules\FindThreads.cmake;C:\Program Files (x86)\Canon\Easy-WebPrint EX\share\cmake-3.15\Modules\GNUInstallDirs.cmake;C:\Program Files (x86)\Canon\Easy-WebPrint EX\share\cmake-3.15\Modules\Platform\Windows-MSVC-C.cmake;C:\Program Files (x86)\Canon\Easy-WebPrint EX\share\cmake-3.15\Modules\Platform\Windows-MSVC.cmake;C:\Program Files (x86)\Canon\Easy-WebPrint EX\share\cmake-3.15\Modules\Platform\Windows.cmake;C:\Program Files (x86)\Canon\Easy-WebPrint EX\share\cmake-3.15\Modules\Platform\WindowsPaths.cmake;C:\Program Files (x86)\Canon\Easy-WebPrint EX\share\cmake-3.15\Modules\WriteBasicConfigVersionFile.cmake;E:\GitHub\OpenGLEngine\glfw-3.3\build\CMakeFiles\3.15.0-rc1\CMakeCCompiler.cmake;E:\GitHub\OpenGLEngine\glfw-3.3\build\CMakeFiles\3.15.0-rc1\CMakeRCCompiler.cmake;E:\GitHub\OpenGLEngine\glfw-3.3\build\CMakeFiles\3.15.0-rc1\CMakeSystem.cmake;E:\GitHub\OpenGLEngine\glfw-3.3\cmake_uninstall.cmake.in;E:\GitHub\OpenGLEngine\glfw-3.3\src\glfw3.pc.in;E:\GitHub\OpenGLEngine\glfw-3.3\src\glfw3Config.cmake.in;E:\GitHub\OpenGLEngine\glfw-3.3\src\glfw_config.h.in;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">E:\GitHub\OpenGLEngine\glfw-3.3\build\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">Building Custom Rule E:/GitHub/OpenGLEngine/glfw-3.3/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">setlocal
+"C:\Program Files (x86)\Canon\Easy-WebPrint EX\bin\cmake.exe" -SE:/GitHub/OpenGLEngine/glfw-3.3 -BE:/GitHub/OpenGLEngine/glfw-3.3/build --check-stamp-file E:/GitHub/OpenGLEngine/glfw-3.3/build/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">C:\Program Files (x86)\Canon\Easy-WebPrint EX\share\cmake-3.15\Modules\BasicConfigVersion-SameMajorVersion.cmake.in;C:\Program Files (x86)\Canon\Easy-WebPrint EX\share\cmake-3.15\Modules\CMakeCInformation.cmake;C:\Program Files (x86)\Canon\Easy-WebPrint EX\share\cmake-3.15\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files (x86)\Canon\Easy-WebPrint EX\share\cmake-3.15\Modules\CMakeGenericSystem.cmake;C:\Program Files (x86)\Canon\Easy-WebPrint EX\share\cmake-3.15\Modules\CMakeInitializeConfigs.cmake;C:\Program Files (x86)\Canon\Easy-WebPrint EX\share\cmake-3.15\Modules\CMakeLanguageInformation.cmake;C:\Program Files (x86)\Canon\Easy-WebPrint EX\share\cmake-3.15\Modules\CMakePackageConfigHelpers.cmake;C:\Program Files (x86)\Canon\Easy-WebPrint EX\share\cmake-3.15\Modules\CMakeRCInformation.cmake;C:\Program Files (x86)\Canon\Easy-WebPrint EX\share\cmake-3.15\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files (x86)\Canon\Easy-WebPrint EX\share\cmake-3.15\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files (x86)\Canon\Easy-WebPrint EX\share\cmake-3.15\Modules\CheckCSourceCompiles.cmake;C:\Program Files (x86)\Canon\Easy-WebPrint EX\share\cmake-3.15\Modules\CheckIncludeFile.cmake;C:\Program Files (x86)\Canon\Easy-WebPrint EX\share\cmake-3.15\Modules\CheckLibraryExists.cmake;C:\Program Files (x86)\Canon\Easy-WebPrint EX\share\cmake-3.15\Modules\Compiler\MSVC-C.cmake;C:\Program Files (x86)\Canon\Easy-WebPrint EX\share\cmake-3.15\Modules\FindDoxygen.cmake;C:\Program Files (x86)\Canon\Easy-WebPrint EX\share\cmake-3.15\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files (x86)\Canon\Easy-WebPrint EX\share\cmake-3.15\Modules\FindPackageMessage.cmake;C:\Program Files (x86)\Canon\Easy-WebPrint EX\share\cmake-3.15\Modules\FindThreads.cmake;C:\Program Files (x86)\Canon\Easy-WebPrint EX\share\cmake-3.15\Modules\GNUInstallDirs.cmake;C:\Program Files (x86)\Canon\Easy-WebPrint EX\share\cmake-3.15\Modules\Platform\Windows-MSVC-C.cmake;C:\Program Files (x86)\Canon\Easy-WebPrint EX\share\cmake-3.15\Modules\Platform\Windows-MSVC.cmake;C:\Program Files (x86)\Canon\Easy-WebPrint EX\share\cmake-3.15\Modules\Platform\Windows.cmake;C:\Program Files (x86)\Canon\Easy-WebPrint EX\share\cmake-3.15\Modules\Platform\WindowsPaths.cmake;C:\Program Files (x86)\Canon\Easy-WebPrint EX\share\cmake-3.15\Modules\WriteBasicConfigVersionFile.cmake;E:\GitHub\OpenGLEngine\glfw-3.3\build\CMakeFiles\3.15.0-rc1\CMakeCCompiler.cmake;E:\GitHub\OpenGLEngine\glfw-3.3\build\CMakeFiles\3.15.0-rc1\CMakeRCCompiler.cmake;E:\GitHub\OpenGLEngine\glfw-3.3\build\CMakeFiles\3.15.0-rc1\CMakeSystem.cmake;E:\GitHub\OpenGLEngine\glfw-3.3\cmake_uninstall.cmake.in;E:\GitHub\OpenGLEngine\glfw-3.3\src\glfw3.pc.in;E:\GitHub\OpenGLEngine\glfw-3.3\src\glfw3Config.cmake.in;E:\GitHub\OpenGLEngine\glfw-3.3\src\glfw_config.h.in;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">E:\GitHub\OpenGLEngine\glfw-3.3\build\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="E:\GitHub\OpenGLEngine\glfw-3.3\build\ZERO_CHECK.vcxproj">
+      <Project>{7FFAF7B0-7DF6-3371-8590-42D61EB7BAD6}</Project>
+      <Name>ZERO_CHECK</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="E:\GitHub\OpenGLEngine\glfw-3.3\build\examples\boing.vcxproj">
+      <Project>{D002ED13-4223-3EAD-AC2A-EEB10B51E3B4}</Project>
+      <Name>boing</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="E:\GitHub\OpenGLEngine\glfw-3.3\build\tests\clipboard.vcxproj">
+      <Project>{1C4B6D42-625C-322D-A34B-D0E57AA79072}</Project>
+      <Name>clipboard</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="E:\GitHub\OpenGLEngine\glfw-3.3\build\tests\cursor.vcxproj">
+      <Project>{D4A73AC2-CEBD-3853-A7AA-7BBE16C5C9DD}</Project>
+      <Name>cursor</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="E:\GitHub\OpenGLEngine\glfw-3.3\build\tests\empty.vcxproj">
+      <Project>{ED499ADB-7A48-3EF0-9669-4848ED48EB3D}</Project>
+      <Name>empty</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="E:\GitHub\OpenGLEngine\glfw-3.3\build\tests\events.vcxproj">
+      <Project>{8DE57885-3E29-36D8-B5F8-6B0F6E21C5A4}</Project>
+      <Name>events</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="E:\GitHub\OpenGLEngine\glfw-3.3\build\tests\gamma.vcxproj">
+      <Project>{4A951B04-E952-3C62-B59E-6245A3EEA701}</Project>
+      <Name>gamma</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="E:\GitHub\OpenGLEngine\glfw-3.3\build\examples\gears.vcxproj">
+      <Project>{94DAE385-5533-3A3B-973D-A9617E245614}</Project>
+      <Name>gears</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="E:\GitHub\OpenGLEngine\glfw-3.3\build\src\glfw.vcxproj">
+      <Project>{2024F89B-5A64-386F-8E22-C830F966FFDE}</Project>
+      <Name>glfw</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="E:\GitHub\OpenGLEngine\glfw-3.3\build\tests\glfwinfo.vcxproj">
+      <Project>{CC619041-6D78-3539-B911-06A23D962C03}</Project>
+      <Name>glfwinfo</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="E:\GitHub\OpenGLEngine\glfw-3.3\build\examples\heightmap.vcxproj">
+      <Project>{BB2B1D0F-789E-3213-B069-FD6A8BCB8FBE}</Project>
+      <Name>heightmap</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="E:\GitHub\OpenGLEngine\glfw-3.3\build\tests\icon.vcxproj">
+      <Project>{0EFBD855-BA38-39CD-A47B-A8CA52AE0E1B}</Project>
+      <Name>icon</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="E:\GitHub\OpenGLEngine\glfw-3.3\build\tests\iconify.vcxproj">
+      <Project>{467AFE77-7BFD-3361-9A92-88F6C57BBFB8}</Project>
+      <Name>iconify</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="E:\GitHub\OpenGLEngine\glfw-3.3\build\tests\inputlag.vcxproj">
+      <Project>{F3C7DBBD-CAC8-3998-933E-1204FE1D154A}</Project>
+      <Name>inputlag</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="E:\GitHub\OpenGLEngine\glfw-3.3\build\tests\joysticks.vcxproj">
+      <Project>{85D2064A-D711-350A-8FC7-46362EB0F120}</Project>
+      <Name>joysticks</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="E:\GitHub\OpenGLEngine\glfw-3.3\build\tests\monitors.vcxproj">
+      <Project>{28A51F21-F598-3B46-ABEA-C06F97D86D28}</Project>
+      <Name>monitors</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="E:\GitHub\OpenGLEngine\glfw-3.3\build\tests\msaa.vcxproj">
+      <Project>{C13608E2-D8BB-3550-B15B-10E73DC21AC4}</Project>
+      <Name>msaa</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="E:\GitHub\OpenGLEngine\glfw-3.3\build\examples\offscreen.vcxproj">
+      <Project>{6D92DBCE-BE8F-3B8C-8357-EF85474A5C67}</Project>
+      <Name>offscreen</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="E:\GitHub\OpenGLEngine\glfw-3.3\build\tests\opacity.vcxproj">
+      <Project>{CA28C744-E198-34B7-8E1D-E59E1A48F1CF}</Project>
+      <Name>opacity</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="E:\GitHub\OpenGLEngine\glfw-3.3\build\examples\particles.vcxproj">
+      <Project>{A83515D9-E325-3D18-9E56-7E3B99EA60E7}</Project>
+      <Name>particles</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="E:\GitHub\OpenGLEngine\glfw-3.3\build\tests\reopen.vcxproj">
+      <Project>{E8D50A9E-3FCD-355F-8F1F-052153F998E9}</Project>
+      <Name>reopen</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="E:\GitHub\OpenGLEngine\glfw-3.3\build\examples\sharing.vcxproj">
+      <Project>{BCBC120A-3019-32BD-96C2-E9D6360409C6}</Project>
+      <Name>sharing</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="E:\GitHub\OpenGLEngine\glfw-3.3\build\examples\simple.vcxproj">
+      <Project>{B55BE455-3596-39C9-ADE1-AF0A4ADD6FC9}</Project>
+      <Name>simple</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="E:\GitHub\OpenGLEngine\glfw-3.3\build\examples\splitview.vcxproj">
+      <Project>{861B2ADA-5ED9-3977-8037-AF03F5CDB209}</Project>
+      <Name>splitview</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="E:\GitHub\OpenGLEngine\glfw-3.3\build\tests\tearing.vcxproj">
+      <Project>{409F4E25-A83B-3C33-89FD-92F5DB0770E5}</Project>
+      <Name>tearing</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="E:\GitHub\OpenGLEngine\glfw-3.3\build\tests\threads.vcxproj">
+      <Project>{F263E47D-FB7C-3CF3-B3F1-2D9614B0A1E5}</Project>
+      <Name>threads</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="E:\GitHub\OpenGLEngine\glfw-3.3\build\tests\timeout.vcxproj">
+      <Project>{3E7516B2-A675-329D-BA0C-55D515600D40}</Project>
+      <Name>timeout</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="E:\GitHub\OpenGLEngine\glfw-3.3\build\tests\title.vcxproj">
+      <Project>{3E904441-F302-34B4-AAB2-0587727E6C49}</Project>
+      <Name>title</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="E:\GitHub\OpenGLEngine\glfw-3.3\build\tests\vulkan.vcxproj">
+      <Project>{33B08BCB-57F8-3E14-B3B8-9426A1991023}</Project>
+      <Name>vulkan</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="E:\GitHub\OpenGLEngine\glfw-3.3\build\examples\wave.vcxproj">
+      <Project>{2ED882CA-F69C-304D-A17C-616F03C7C33D}</Project>
+      <Name>wave</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="E:\GitHub\OpenGLEngine\glfw-3.3\build\tests\windows.vcxproj">
+      <Project>{A19A955F-132A-39DB-B4FE-9BF86A03C34C}</Project>
+      <Name>windows</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
