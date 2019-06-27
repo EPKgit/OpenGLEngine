@@ -21,7 +21,7 @@ class Time : public Singleton<Time>
 public:
 	float GetCurrentTime();
 	float GetCurrentDeltaTime();
-	void Tick();
+	float Tick();
 private:
 	friend class Singleton<Time>;
 	Time() : deltaTime(0), totalTime(0) { }

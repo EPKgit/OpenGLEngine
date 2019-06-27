@@ -10,24 +10,26 @@ float Time::GetCurrentDeltaTime()
 	return deltaTime;
 }
 
-void Time::Tick()
+float Time::Tick()
 {
 	deltaTime = clock.Restart();
 	totalTime += deltaTime;
+	return deltaTime;
 }
 
 
 float Clock::Restart()
 {
 	currentTime = std::chrono::steady_clock::now();
-	float temp = (currentTime - startTime).count();
+	std::chrono::duration<double> temp = std::chrono::duration_cast<std::chrono::duration<double>>(currentTime - startTime);
 	startTime = std::chrono::steady_clock::now();
-	return temp;
+	return temp.count();
 }
 float Clock::GetTime()
 {
 	currentTime = std::chrono::steady_clock::now();
-	return (currentTime - startTime).count();
+	std::chrono::duration<double> temp = std::chrono::duration_cast<std::chrono::duration<double>>(currentTime - startTime);
+	return temp.count();
 }
 Clock::Clock()
 {

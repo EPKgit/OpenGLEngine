@@ -29,8 +29,6 @@ public:
 	template<class T>
 	bool removeComp();
 
-	std::shared_ptr<MeshComponent> addCompTest();
-
 	template<class T>
 	std::shared_ptr<T> addComp();
 

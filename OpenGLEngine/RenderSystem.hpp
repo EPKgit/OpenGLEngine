@@ -4,6 +4,11 @@
 #include <vector>
 #include <iostream>
 
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
+#include <glad/glad.h>
+
 #include "System.hpp"
 #include "Entity.hpp"
 #include "MeshComponent.hpp"
@@ -15,26 +20,12 @@
 class RenderSystem : public System
 {
 private:
-	/*sf::RenderWindow * window;*/
-	const structs::vec3d startingPosition = { 0, 1.5, 0 };
-	const structs::vec3d startingDirection = { 0, 0, 1 };
-	const structs::vec3d upDirection = { 0, 1 ,0 };
-	structs::vec3d cameraPos;
-	structs::vec3d cameraDirection;
-	structs::vec3d orthoCameraDirection;
-	structs::mat4x4 rotX;
-	structs::mat4x4 rotY;
-	float fYaw;
-	float fPitch;
+	glm::mat4 model;
+	glm::mat4 view;
+	glm::mat4 projection;
+	std::shared_ptr<MeshComponent> mcptr;
 public:
 	RenderSystem();
-	/*void SetWindow(sf::RenderWindow *);*/
 	void Run(float);
-	void DoCharacterMovement_FORDEBUG(const structs::vec3d, float);
-	void DoCharacterLook_FORDEBUG(const structs::vec3d, float);
-	void OffsetCameraPosition_FORDEBUG(const structs::vec3d, float);
-	void OffsetCameraRotation_FORDEBUG(const structs::vec3d, float);
-	void OverwriteCameraRotation_FORDEBUG(const structs::vec3d newAngle);
-	void OverwriteCameraPosition_FORDEBUG(const structs::vec3d newPos);
 };
 #endif // !_RENDERSYSTEM_HPP

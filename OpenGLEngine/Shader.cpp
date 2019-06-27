@@ -1,23 +1,59 @@
 #include "Shader.hpp"
 
-Shader::Shader(const char * vFilename, const char * fFilename)
+unsigned int Shader::GetID()
 {
-	CreateMyShaderProgram(ID, vFilename, fFilename);
+	return ID;
 }
 
-void Shader::SetBool(const char * name, bool b)
+void Shader::SetBool(const char * name, const bool b) const
 {
 	glUniform1i(glGetUniformLocation(ID, name), b);
 }
 
-void Shader::SetInt(const char * name, int i)
+void Shader::SetInt(const char * name, const int i) const
 {
 	glUniform1i(glGetUniformLocation(ID, name), i);
 }
 
-void Shader::SetFloat(const char * name, float f)
+void Shader::SetFloat(const char * name, float f) const
 {
 	glUniform1i(glGetUniformLocation(ID, name), (GLint)f);
+}
+void Shader::setVec2(const char * name, const glm::vec2 &value) const
+{
+	glUniform2fv(glGetUniformLocation(ID, name), 1, &value[0]);
+}
+void Shader::setVec2(const char * name, float x, float y) const
+{
+	glUniform2f(glGetUniformLocation(ID, name), x, y);
+}
+void Shader::setVec3(const char * name, const glm::vec3 &value) const
+{
+	glUniform3fv(glGetUniformLocation(ID, name), 1, &value[0]);
+}
+void Shader::setVec3(const char * name, float x, float y, float z) const
+{
+	glUniform3f(glGetUniformLocation(ID, name), x, y, z);
+}
+void Shader::setVec4(const char * name, const glm::vec4 &value) const
+{
+	glUniform4fv(glGetUniformLocation(ID, name), 1, &value[0]);
+}
+void Shader::setVec4(const char * name, float x, float y, float z, float w) const
+{
+	glUniform4f(glGetUniformLocation(ID, name), x, y, z, w);
+}
+void Shader::setMat2(const char * name, const glm::mat2 &mat) const
+{
+	glUniformMatrix2fv(glGetUniformLocation(ID, name), 1, GL_FALSE, &mat[0][0]);
+}
+void Shader::setMat3(const char * name, const glm::mat3 &mat) const
+{
+	glUniformMatrix3fv(glGetUniformLocation(ID, name), 1, GL_FALSE, &mat[0][0]);
+}
+void Shader::setMat4(const char * name, const glm::mat4 &mat) const
+{
+	glUniformMatrix4fv(glGetUniformLocation(ID, name), 1, GL_FALSE, &mat[0][0]);
 }
 
 void Shader::Use()
@@ -33,7 +69,7 @@ std::string Shader::ReadShaderFile(const char * filename)
 	if (!file.is_open())
 	{
 		std::cout << "ERROR CANNOT OPEN SHADER FILE" << std::endl;
-		return false;
+		return std::string();
 	}
 	while (std::getline(file, workstring))
 	{

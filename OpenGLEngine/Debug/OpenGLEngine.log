@@ -1,8 +1,27 @@
-﻿  Entity.cpp
+﻿  Component.cpp
+  Constants.cpp
+  Entity.cpp
   EntityManager.cpp
+  Graphics.cpp
   InputSystem.cpp
   main.cpp
   MeshComponent.cpp
   RenderSystem.cpp
+d:\github\openglengine\openglengine\rendersystem.cpp(38): warning C4018: '<': signed/unsigned mismatch
+  Shader.cpp
+  Time.cpp
+d:\github\openglengine\openglengine\time.cpp(26): warning C4244: 'return': conversion from '_Rep' to 'float', possible loss of data
+          with
+          [
+              _Rep=double
+          ]
+d:\github\openglengine\openglengine\time.cpp(32): warning C4244: 'return': conversion from '_Rep' to 'float', possible loss of data
+          with
+          [
+              _Rep=double
+          ]
   Generating Code...
-  OpenGLEngine.vcxproj -> E:\GitHub\OpenGLEngine\Debug\OpenGLEngine.exe
+  glad.c
+c:\program files (x86)\windows kits\10\include\10.0.17763.0\shared\minwindef.h(130): warning C4005: 'APIENTRY': macro redefinition
+  d:\github\openglengine\include\glad\glad.h(32): note: see previous definition of 'APIENTRY'
+  OpenGLEngine.vcxproj -> D:\Github\OpenGLEngine\Debug\OpenGLEngine.exe

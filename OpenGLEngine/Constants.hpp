@@ -14,13 +14,13 @@ namespace constants
 
 	const int maxComponents = 128;
 
-	const unsigned int screenHeight = 768;
-	const unsigned int screenWidth = 1024;
+	const unsigned int screenHeight = 768*2;
+	const unsigned int screenWidth = 1024*2;
 	const float fieldOfView = 90.0f;
 	const float zNear = 0.1f;
 	const float zFar = 100.0f;
 	const float fovScaling = 1.0f / tanf(lib::DegToRadf(fieldOfView) * 0.5f);
-	const float aspectRatio = (float)screenHeight / screenWidth;
+	const float aspectRatio = (float)screenWidth / screenHeight ;
 
 	namespace matrices
 	{

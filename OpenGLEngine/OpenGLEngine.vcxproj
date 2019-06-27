@@ -70,8 +70,8 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <LibraryPath>E:\GitHub\OpenGLEngine\glfw-3.3\build\src\Debug;$(LibraryPath)</LibraryPath>
-    <IncludePath>E:\GitHub\OpenGLEngine\glfw-3.3\include\;$(IncludePath)</IncludePath>
+    <LibraryPath>E:\GitHub\OpenGLEngine\glfw-3.3\build\src\Debug;D:\GitHub\OpenGLEngine\libs;$(LibraryPath)</LibraryPath>
+    <IncludePath>E:\GitHub\OpenGLEngine\glfw-3.3\include\;D:\Github\OpenGLEngine\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LibraryPath>E:\GitHub\OpenGLEngine\glfw-3.3\build\src\Debug;$(LibraryPath)</LibraryPath>
@@ -152,6 +152,7 @@
     <ClCompile Include="Shader.cpp" />
     <ClCompile Include="stb_image.cpp" />
     <ClCompile Include="Structs.cpp" />
+    <ClCompile Include="Texture.cpp" />
     <ClCompile Include="Time.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -170,11 +171,12 @@
     <ClInclude Include="stb_image.h" />
     <ClInclude Include="Structs.hpp" />
     <ClInclude Include="System.hpp" />
+    <ClInclude Include="Texture.hpp" />
     <ClInclude Include="Time.hpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="BaseFragment.shader" />
-    <None Include="BaseVertex.shader" />
+    <None Include="BaseFragment.frag" />
+    <None Include="BaseVertex.vert" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

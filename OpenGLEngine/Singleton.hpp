@@ -1,7 +1,7 @@
 #ifndef _SINGLETON_HPP
 #define _SINGLETON_HPP
 
-#include <vector>
+#include "vector"
 
 template<class T>
 class Singleton

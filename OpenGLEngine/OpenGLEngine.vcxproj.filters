@@ -90,14 +90,17 @@
     <ClCompile Include="Graphics.cpp">
       <Filter>Source Files\Graphics</Filter>
     </ClCompile>
-    <ClCompile Include="Shader.cpp">
-      <Filter>Source Files\Graphics</Filter>
-    </ClCompile>
     <ClCompile Include="glad.c">
       <Filter>Source Files\OutsideLibraries</Filter>
     </ClCompile>
     <ClCompile Include="stb_image.cpp">
       <Filter>Source Files\OutsideLibraries</Filter>
+    </ClCompile>
+    <ClCompile Include="Shader.cpp">
+      <Filter>Source Files\DataStructures</Filter>
+    </ClCompile>
+    <ClCompile Include="Texture.cpp">
+      <Filter>Source Files\DataStructures</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -143,18 +146,21 @@
     <ClInclude Include="Delegate.hpp">
       <Filter>Header Files\DataStructures</Filter>
     </ClInclude>
-    <ClInclude Include="Shader.hpp">
-      <Filter>Header Files\Graphics</Filter>
-    </ClInclude>
     <ClInclude Include="stb_image.h">
       <Filter>Header Files\OutsideLibraries</Filter>
     </ClInclude>
+    <ClInclude Include="Texture.hpp">
+      <Filter>Header Files\DataStructures</Filter>
+    </ClInclude>
+    <ClInclude Include="Shader.hpp">
+      <Filter>Header Files\DataStructures</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="BaseVertex.shader">
+    <None Include="BaseFragment.frag">
       <Filter>Source Files\Shaders</Filter>
     </None>
-    <None Include="BaseFragment.shader">
+    <None Include="BaseVertex.vert">
       <Filter>Source Files\Shaders</Filter>
     </None>
   </ItemGroup>
