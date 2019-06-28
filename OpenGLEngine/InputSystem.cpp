@@ -1,24 +1,68 @@
 #include "InputSystem.hpp"
 
-//void InputSystem::Run(float deltaTime)
-//{
-//	structs::vec3d t;
-//	t = CheckAxis(sf::Keyboard::W, sf::Keyboard::A, sf::Keyboard::S, sf::Keyboard::D);
-//	if(t != 0.0f)
-//		rs->DoCharacterMovement_FORDEBUG(t, deltaTime);
-//	t = CheckAxis(sf::Keyboard::I, sf::Keyboard::J, sf::Keyboard::K, sf::Keyboard::L);
-//	if(t != 0.0f)
-//		rs->DoCharacterLook_FORDEBUG(t, deltaTime);
-//	t = CheckAxis(sf::Keyboard::Up, sf::Keyboard::Left, sf::Keyboard::Down, sf::Keyboard::Right);
-//	if(t != 0.0f)
-//		rs->OffsetCameraPosition_FORDEBUG(t, deltaTime);
-//	if (sf::Keyboard::isKeyPressed(sf::Keyboard::F1))
-//	{
-//		rs->OverwriteCameraPosition_FORDEBUG({ 0, 0, 0 });
-//		rs->OverwriteCameraRotation_FORDEBUG({ 0, 0, 1 });
-//	}
-//	if (sf::Keyboard::isKeyPressed(sf::Keyboard::F9))
-//	{
-//		constants::DebugVariables::GetInstance()->wireframe = !constants::DebugVariables::GetInstance()->wireframe;
-//	}
-//}
+#include <glad/glad.h>
+#include <GLFW/glfw3.h>
+
+#include "RenderSystem.hpp"
+
+void CaptureMouseInput(GLFWwindow* window, double xpos, double ypos);
+InputSystem::InputSystem(RenderSystem * _rs, GLFWwindow * _w) : rs(_rs), window(_w)
+{
+	glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+	glfwSetCursorPos(window, 0, 0);
+}
+
+void InputSystem::Run(float deltaTime)
+{
+	//Looking
+	CaptureMouseInput(deltaTime);
+
+	//Moving
+	CheckAxis(GLFW_KEY_W, GLFW_KEY_A, GLFW_KEY_S, GLFW_KEY_D, inputAxis);
+	if(inputAxis.x != 0 || inputAxis.y != 0)
+		rs->DoCameraMovement_FORDEBUG(inputAxis, deltaTime);
+
+	//Reset
+	if (glfwGetKey(window, GLFW_KEY_F1) == GLFW_PRESS)
+	{
+		rs->OverwriteCameraPosition_FORDEBUG({ 0, 0, 0 });
+		rs->OverwriteCameraDirection_FORDEBUG({ 0, 0, -1 });
+	}
+}
+
+void InputSystem::CaptureMouseInput(float deltaTime)
+{ //0/1 for fresh input, 2/3 for old input, 4/5 for diff
+	glfwGetCursorPos(window, &mousePosition[0], &mousePosition[1]);
+	mousePosition[4] = mousePosition[0] - mousePosition[2];//new minus old
+	mousePosition[5] = mousePosition[1] - mousePosition[3];
+	if (mousePosition[4] == 0 && mousePosition[5] == 0)
+	{
+		return;
+	}
+	mousePosition[2] = mousePosition[0];
+	mousePosition[3] = mousePosition[1];
+	inputAxis.x = (float)(mousePosition[4]);
+	inputAxis.y = -(float)(mousePosition[5]);//mouse position is recorded from top to bottom so we need to reverse it
+	rs->DoCameraLook_FORDEBUG(inputAxis, deltaTime);
+}
+
+void InputSystem::CheckAxis(int up, int left, int down, int right, glm::vec2 &o)
+{
+	o = { 0, 0 };
+	if (glfwGetKey(window, up) == GLFW_PRESS)
+	{
+		o.y += 1;
+	}
+	if (glfwGetKey(window, down) == GLFW_PRESS)
+	{
+		o.y -= 1;
+	}
+	if (glfwGetKey(window, left) == GLFW_PRESS)
+	{
+		o.x -= 1;
+	}
+	if (glfwGetKey(window, right) == GLFW_PRESS)
+	{
+		o.x += 1;
+	}
+}

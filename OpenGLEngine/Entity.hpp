@@ -2,13 +2,11 @@
 #define _ENTITY_HPP
 
 #include <bitset>
-#include <typeinfo>
 #include <vector>
 #include <memory>
 
-#include "MeshComponent.hpp"
-#include "Constants.hpp"
 #include "Component.hpp"
+#include "Constants.hpp"
 
 class Entity
 {

@@ -1,39 +1,27 @@
 #ifndef _INPUTSYSTEM_HPP
-#define _INPUTSYSETM_HPP
+#define _INPUTSYSTEM_HPP
+
+#include "glm/glm.hpp"
 
 #include "System.hpp"
-#include "Graphics.hpp"
-#include "Structs.hpp"
-#include "RenderSystem.hpp"
+
+class RenderSystem;
+struct GLFWwindow;
 
 class InputSystem : public System
 {
 public:
+	InputSystem(RenderSystem * _rs, GLFWwindow * _w);
+	
 	void Run(float);
 	//ONLY FOR DEBUG TESTING
-	RenderSystem * rs;
 private:
-	/*structs::vec3d CheckAxis(sf::Keyboard::Key up, sf::Keyboard::Key left, sf::Keyboard::Key down, sf::Keyboard::Key right)
-	{
-		structs::vec3d temp = { 0, 0, 0 };
-		if (sf::Keyboard::isKeyPressed(up))
-		{
-			temp.y += 1;
-		}
-		if (sf::Keyboard::isKeyPressed(down))
-		{
-			temp.y -= 1;
-		}
-		if (sf::Keyboard::isKeyPressed(left))
-		{
-			temp.x -= 1;
-		}
-		if (sf::Keyboard::isKeyPressed(right))
-		{
-			temp.x += 1;
-		}
-		return temp;
-	}*/
+	GLFWwindow * window;
+	RenderSystem * rs;
+	glm::vec2 inputAxis;
+	double mousePosition[6];//0/1 for fresh input, 2/3 for old input, 4/5 for diff
+	void CaptureMouseInput(float);
+	void CheckAxis(int up, int left, int down, int right, glm::vec2 &o);
 };
 
 #endif // ! _INPUTSYSTEM_HPP

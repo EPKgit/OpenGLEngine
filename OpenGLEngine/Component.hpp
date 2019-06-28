@@ -5,11 +5,9 @@
 
 class Component
 {
-private:
-
 public:
 	Component();
 	virtual ~Component();
-	constants::ComponentType type = constants::ComponentType::Base;
+	constants::ComponentType type;
 };
 #endif // ! _COMPONENT_HPP

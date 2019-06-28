@@ -1,5 +1,10 @@
 #include "Texture.hpp"
 
+#include <iostream>
+
+#include "stb_image.h"
+#include <GLFW/glfw3.h>
+
 Texture::Texture(const char * filename, unsigned int storageFormat /*= GL_RGB*/,
 				 unsigned int sourceFormat /*= GL_RGB*/, bool shouldFlip /*= false*/)
 {

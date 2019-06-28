@@ -71,19 +71,19 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LibraryPath>E:\GitHub\OpenGLEngine\glfw-3.3\build\src\Debug;D:\GitHub\OpenGLEngine\libs;$(LibraryPath)</LibraryPath>
-    <IncludePath>E:\GitHub\OpenGLEngine\glfw-3.3\include\;D:\Github\OpenGLEngine\include;$(IncludePath)</IncludePath>
+    <IncludePath>E:\GitHub\OpenGLEngine\include;D:\Github\OpenGLEngine\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LibraryPath>E:\GitHub\OpenGLEngine\glfw-3.3\build\src\Debug;$(LibraryPath)</LibraryPath>
-    <IncludePath>E:\GitHub\OpenGLEngine\glfw-3.3\include\;$(IncludePath)</IncludePath>
+    <IncludePath>E:\GitHub\OpenGLEngine\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LibraryPath>E:\GitHub\OpenGLEngine\glfw-3.3\build\src\Debug;$(LibraryPath)</LibraryPath>
-    <IncludePath>E:\GitHub\OpenGLEngine\glfw-3.3\include\;$(IncludePath)</IncludePath>
+    <IncludePath>E:\GitHub\OpenGLEngine\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LibraryPath>E:\GitHub\OpenGLEngine\glfw-3.3\build\src\Debug;$(LibraryPath)</LibraryPath>
-    <IncludePath>E:\GitHub\OpenGLEngine\glfw-3.3\include\;$(IncludePath)</IncludePath>
+    <IncludePath>E:\GitHub\OpenGLEngine\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -143,7 +143,6 @@
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="EntityManager.cpp" />
     <ClCompile Include="glad.c" />
-    <ClCompile Include="Graphics.cpp" />
     <ClCompile Include="InputSystem.cpp" />
     <ClCompile Include="Library.cpp" />
     <ClCompile Include="main.cpp" />
@@ -152,6 +151,7 @@
     <ClCompile Include="Shader.cpp" />
     <ClCompile Include="stb_image.cpp" />
     <ClCompile Include="Structs.cpp" />
+    <ClCompile Include="System.cpp" />
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="Time.cpp" />
   </ItemGroup>
@@ -161,10 +161,11 @@
     <ClInclude Include="Delegate.hpp" />
     <ClInclude Include="Entity.hpp" />
     <ClInclude Include="EntityManager.hpp" />
-    <ClInclude Include="Graphics.hpp" />
+    <ClInclude Include="FollowComponent.hpp" />
     <ClInclude Include="InputSystem.hpp" />
     <ClInclude Include="Library.hpp" />
     <ClInclude Include="MeshComponent.hpp" />
+    <ClInclude Include="PositionComponent.hpp" />
     <ClInclude Include="RenderSystem.hpp" />
     <ClInclude Include="Shader.hpp" />
     <ClInclude Include="Singleton.hpp" />

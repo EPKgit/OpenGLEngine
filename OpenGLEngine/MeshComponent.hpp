@@ -8,9 +8,8 @@
 #include <glm/glm.hpp>
 
 #include "Component.hpp"
-#include "Structs.hpp"
-#include "Shader.hpp"
 #include "Texture.hpp"
+#include "Shader.hpp"
 
 enum MeshType
 {

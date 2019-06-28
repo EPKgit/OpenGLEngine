@@ -2,18 +2,17 @@
 #define _SYSTEM_HPP
 
 #include <memory>
+#include <vector>
 
-#include "EntityManager.hpp"
+class Entity;
+class EntityManager;
 
 class System
 {
 protected:
 	std::vector<std::shared_ptr<Entity>> entities;
 public:
-	System()
-	{
-		em = EntityManager::GetInstance();
-	}
+	System();
 	EntityManager * em;
 	virtual void Run(float) = 0;
 };

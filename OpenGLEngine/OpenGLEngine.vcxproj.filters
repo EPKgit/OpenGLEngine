@@ -34,17 +34,11 @@
     <Filter Include="Source Files\Shaders">
       <UniqueIdentifier>{68b7c1e0-bf7a-4f37-8c45-a8b57eadee0b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Graphics">
-      <UniqueIdentifier>{84622443-f9a6-4c03-94dd-484e1cdaed87}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\DataStructures">
       <UniqueIdentifier>{37f35c6b-1f47-4bb4-82f2-a2b417f9a4d4}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\DataStructures">
       <UniqueIdentifier>{1931d31c-f05e-4b0b-9542-c4806875cd6a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Graphics">
-      <UniqueIdentifier>{550df224-29f0-4eb6-9c5b-e9b787a9fe83}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\OutsideLibraries">
       <UniqueIdentifier>{7a3282fd-42cb-416a-806c-b893b2b8630c}</UniqueIdentifier>
@@ -72,9 +66,6 @@
     <ClCompile Include="InputSystem.cpp">
       <Filter>Source Files\Systems</Filter>
     </ClCompile>
-    <ClCompile Include="Library.cpp">
-      <Filter>Source Files\Misc</Filter>
-    </ClCompile>
     <ClCompile Include="MeshComponent.cpp">
       <Filter>Source Files\Components</Filter>
     </ClCompile>
@@ -87,9 +78,6 @@
     <ClCompile Include="Structs.cpp">
       <Filter>Source Files\DataStructures</Filter>
     </ClCompile>
-    <ClCompile Include="Graphics.cpp">
-      <Filter>Source Files\Graphics</Filter>
-    </ClCompile>
     <ClCompile Include="glad.c">
       <Filter>Source Files\OutsideLibraries</Filter>
     </ClCompile>
@@ -101,6 +89,12 @@
     </ClCompile>
     <ClCompile Include="Texture.cpp">
       <Filter>Source Files\DataStructures</Filter>
+    </ClCompile>
+    <ClCompile Include="System.cpp">
+      <Filter>Source Files\Systems</Filter>
+    </ClCompile>
+    <ClCompile Include="Library.cpp">
+      <Filter>Source Files\Misc</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -137,9 +131,6 @@
     <ClInclude Include="EntityManager.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Graphics.hpp">
-      <Filter>Header Files\Graphics</Filter>
-    </ClInclude>
     <ClInclude Include="Structs.hpp">
       <Filter>Header Files\DataStructures</Filter>
     </ClInclude>
@@ -154,6 +145,12 @@
     </ClInclude>
     <ClInclude Include="Shader.hpp">
       <Filter>Header Files\DataStructures</Filter>
+    </ClInclude>
+    <ClInclude Include="FollowComponent.hpp">
+      <Filter>Header Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="PositionComponent.hpp">
+      <Filter>Header Files\Components</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

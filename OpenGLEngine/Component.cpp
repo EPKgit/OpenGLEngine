@@ -1,4 +1,7 @@
 #include "Component.hpp"
 
-Component::Component() { }
+Component::Component() 
+{
+	type = constants::ComponentType::Base;
+}
 Component::~Component() { }
