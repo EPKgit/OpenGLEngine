@@ -4,16 +4,14 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
-#include "stb_image.h"
-#include "Structs.hpp"
 #include "Constants.hpp"
-#include "InputSystem.hpp"
-#include "Shader.hpp"
-#include "Texture.hpp"
-#include "RenderSystem.hpp"
-#include "InputSystem.hpp"
 #include "Library.hpp"
 #include "Time.hpp"
+
+#include "RenderSystemFPS.hpp"
+#include "RenderSystemThirdPerson.hpp"
+#include "InputSystem.hpp"
+#include "FollowSystem.hpp"
 
 void window_resize_callback(GLFWwindow* window, int width, int height)
 {
@@ -38,11 +36,11 @@ void PROCESSINPUT_TEMP(GLFWwindow * window)
 
 void GameLoop(GLFWwindow * window)
 {
-	
 	lib::CreateCubeEntity();
+	lib::CreateCameraEntityThirdPerson();
 
 	float deltaTime;
-	RenderSystem rs;
+	RenderSystemThirdPerson rs;
 	InputSystem is(&rs, window);
 	Time * t = Time::GetInstance();
 	char titleBuf[64];

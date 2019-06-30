@@ -1,11 +1,2 @@
-﻿  Component.cpp
-  Constants.cpp
-  Entity.cpp
-  EntityManager.cpp
-  Library.cpp
-  MeshComponent.cpp
-  RenderSystem.cpp
-  System.cpp
-  main.cpp
-  Generating Code...
+﻿  Library.cpp
   OpenGLEngine.vcxproj -> E:\GitHub\OpenGLEngine\Debug\OpenGLEngine.exe

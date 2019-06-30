@@ -3,8 +3,6 @@
 MeshComponent::MeshComponent()
 {
 	type = constants::ComponentType::MeshComponent;
-	pos = { 0, 0, 0 };
-	rot = { 0, 0, 0 };
 }
 
 MeshComponent::MeshComponent(std::vector<float> *v, std::vector<unsigned int> *i, bool color, bool tex) : MeshComponent::MeshComponent(v, color, tex)

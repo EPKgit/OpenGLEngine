@@ -3,13 +3,22 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
-#include "RenderSystem.hpp"
+#include "RenderSystemFPS.hpp"
+#include "RenderSystemThirdPerson.hpp"
 
-void CaptureMouseInput(GLFWwindow* window, double xpos, double ypos);
-InputSystem::InputSystem(RenderSystem * _rs, GLFWwindow * _w) : rs(_rs), window(_w)
+InputSystem::InputSystem(RenderSystemFPS * _rs, GLFWwindow * _w) : rs(_rs), window(_w)
 {
 	glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 	glfwSetCursorPos(window, 0, 0);
+	FPS = true;
+}
+
+
+InputSystem::InputSystem(RenderSystemThirdPerson * _rs, GLFWwindow * _w) : rs2(_rs), window(_w)
+{
+	glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+	glfwSetCursorPos(window, 0, 0);
+	FPS = false;
 }
 
 void InputSystem::Run(float deltaTime)
@@ -19,14 +28,16 @@ void InputSystem::Run(float deltaTime)
 
 	//Moving
 	CheckAxis(GLFW_KEY_W, GLFW_KEY_A, GLFW_KEY_S, GLFW_KEY_D, inputAxis);
-	if(inputAxis.x != 0 || inputAxis.y != 0)
-		rs->DoCameraMovement_FORDEBUG(inputAxis, deltaTime);
-
-	//Reset
-	if (glfwGetKey(window, GLFW_KEY_F1) == GLFW_PRESS)
+	if (inputAxis.x != 0 || inputAxis.y != 0)
 	{
-		rs->OverwriteCameraPosition_FORDEBUG({ 0, 0, 0 });
-		rs->OverwriteCameraDirection_FORDEBUG({ 0, 0, -1 });
+		if (FPS)
+		{
+			rs->DoCameraMovement_FORDEBUG(inputAxis, deltaTime);
+		}
+		else
+		{
+			rs2->DoCameraMovement_FORDEBUG(inputAxis, deltaTime);
+		}
 	}
 }
 
@@ -43,7 +54,14 @@ void InputSystem::CaptureMouseInput(float deltaTime)
 	mousePosition[3] = mousePosition[1];
 	inputAxis.x = (float)(mousePosition[4]);
 	inputAxis.y = -(float)(mousePosition[5]);//mouse position is recorded from top to bottom so we need to reverse it
-	rs->DoCameraLook_FORDEBUG(inputAxis, deltaTime);
+	if (FPS)
+	{
+		rs->DoCameraLook_FORDEBUG(inputAxis, deltaTime);
+	}
+	else
+	{
+		rs2->DoCameraLook_FORDEBUG(inputAxis, deltaTime);
+	}
 }
 
 void InputSystem::CheckAxis(int up, int left, int down, int right, glm::vec2 &o)

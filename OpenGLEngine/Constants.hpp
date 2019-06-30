@@ -8,7 +8,7 @@ namespace constants
 {
 	enum ComponentType
 	{
-		Base = 0, MeshComponent = 1, PositionComponent = 2, FollowComponent = 69
+		Base = 0, MeshComponent = 1, TransformComponent = 2, CameraComponent = 3, FollowComponent = 69
 	};
 
 	const int maxComponents = 128;

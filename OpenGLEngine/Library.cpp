@@ -4,10 +4,11 @@
 
 #include <math.h>
 #include <vector>
-#include <memory>
 
 #include "MeshComponent.hpp"
+#include "TransformComponent.hpp"
 #include "EntityManager.hpp"
+#include "CameraComponent.hpp"
 
 inline float lib::DegToRadf(float degreeMeasure)
 {
@@ -18,7 +19,7 @@ inline float lib::RadToDegf(float radMeasure)
 	return radMeasure / (float)M_PI * 180.0f;
 }
 
-void lib::CreateCubeEntity()
+std::shared_ptr<Entity> lib::CreateCubeEntity()
 {
 	std::vector<float> vertices =
 	{
@@ -78,4 +79,22 @@ void lib::CreateCubeEntity()
 
 	std::shared_ptr<Entity> e = EntityManager::GetInstance()->createEntity();
 	e->addComp<MeshComponent>(mesh);
+	e->addComp<TransformComponent>();
+	return e;
+}
+
+std::shared_ptr<Entity> lib::CreateCameraEntityFPS()
+{
+	std::shared_ptr<Entity> e = EntityManager::GetInstance()->createEntity();
+	e->addComp<TransformComponent>();
+	e->addComp<CameraComponent, glm::vec3>({ 0, 0, 3 });
+	return e;
+}
+
+std::shared_ptr<Entity> lib::CreateCameraEntityThirdPerson()
+{
+	std::shared_ptr<Entity> e = lib::CreateCubeEntity();
+	e->addComp<CameraComponent, glm::vec3>({ 0, 1.2, 1.2 });
+	e->getComp<TransformComponent>()->scale = { 0.2, 0.2, 0.2 };
+	return e;
 }

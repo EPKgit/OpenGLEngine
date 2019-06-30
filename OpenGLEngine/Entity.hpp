@@ -19,9 +19,9 @@ public:
 	}
 
 	template<class T>
-	bool hasComp();
+	bool hasComps();
 
-	template<class T1, class ... others>
+	template<class T1, class T2, class ... rest>
 	bool hasComps();
 
 	template<class T>
@@ -29,6 +29,9 @@ public:
 
 	template<class T>
 	std::shared_ptr<T> addComp();
+
+	template<class T, class ...Args>
+	std::shared_ptr<T> addComp(Args ...args);
 
 	template<class T>
 	std::shared_ptr<T> addComp(std::shared_ptr<T>);
@@ -39,21 +42,24 @@ public:
 private:
 	std::bitset<constants::maxComponents> compBits;
 	std::vector<std::shared_ptr<Component>> comps;
-
 };
 
 template<class T>
-bool Entity::hasComp()
+bool Entity::hasComps()
 {
 	T c;
 	return compBits.test(c.type);
 };
 
-template<class T1, class ... others>
+template<class T1, class T2, class... rest>
 bool Entity::hasComps()
 {
 	T1 c;
-	return compBits.test(c.type) && hasComps<others ...>();
+	if (compBits.test(c.type))
+	{
+		return hasComps<T2, rest ...>();
+	}
+	return false;
 }
 
 template<class T>
@@ -75,7 +81,7 @@ bool Entity::removeComp()
 template<class T>
 std::shared_ptr<T> Entity::addComp()
 {
-	if (hasComp<T>())
+	if (hasComps<T>())
 	{
 		return nullptr;
 	}
@@ -83,10 +89,21 @@ std::shared_ptr<T> Entity::addComp()
 	return addComp<T>(c);
 }
 
+template<class T, class ...Args>
+std::shared_ptr<T> Entity::addComp(Args ...args)
+{
+	if (hasComps<T>())
+	{
+		return nullptr;
+	}
+	std::shared_ptr<T> c = std::make_shared<T>(args...);
+	return addComp<T>(c);
+}
+
 template<class T>
 std::shared_ptr<T> Entity::addComp(std::shared_ptr<T> c)
 {
-	if (hasComp<T>())
+	if (hasComps<T>())
 	{
 		return nullptr;
 	}
@@ -99,7 +116,7 @@ template<class T>
 std::shared_ptr<T> Entity::getComp()
 {
 	T c;
-	if (hasComp<T>())
+	if (hasComps<T>())
 	{
 		for (unsigned int i = 0; i < comps.size(); ++i)
 		{

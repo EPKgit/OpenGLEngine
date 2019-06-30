@@ -24,8 +24,6 @@ public:
 	unsigned int VBO;
 	unsigned int EBO;
 	unsigned int numElements;
-	glm::vec3 pos;
-	glm::vec3 rot;
 	std::vector<float> verts;
 	std::vector<unsigned int> indices;
 	std::vector<Texture> textures;
