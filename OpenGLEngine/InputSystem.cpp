@@ -46,14 +46,17 @@ void InputSystem::CaptureMouseInput(float deltaTime)
 	glfwGetCursorPos(window, &mousePosition[0], &mousePosition[1]);
 	mousePosition[4] = mousePosition[0] - mousePosition[2];//new minus old
 	mousePosition[5] = mousePosition[1] - mousePosition[3];
-	if (mousePosition[4] == 0 && mousePosition[5] == 0)
+	if (mousePosition[4] != 0 || mousePosition[5] != 0)
 	{
-		return;
+		mousePosition[2] = mousePosition[0];
+		mousePosition[3] = mousePosition[1];
+		inputAxis.x = (float)(mousePosition[4]);
+		inputAxis.y = -(float)(mousePosition[5]);//mouse position is recorded from top to bottom so we need to reverse it
 	}
-	mousePosition[2] = mousePosition[0];
-	mousePosition[3] = mousePosition[1];
-	inputAxis.x = (float)(mousePosition[4]);
-	inputAxis.y = -(float)(mousePosition[5]);//mouse position is recorded from top to bottom so we need to reverse it
+	else
+	{
+		inputAxis = { 0, 0 };
+	}
 	if (FPS)
 	{
 		rs->DoCameraLook_FORDEBUG(inputAxis, deltaTime);

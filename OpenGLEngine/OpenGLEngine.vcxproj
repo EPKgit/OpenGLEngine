@@ -150,6 +150,9 @@
     <ClCompile Include="MeshComponent.cpp" />
     <ClCompile Include="RenderSystemFPS.cpp" />
     <ClCompile Include="RenderSystemThirdPerson.cpp" />
+    <ClCompile Include="RigidbodyComponent.cpp" />
+    <ClCompile Include="RigidbodyComponent.hpp" />
+    <ClCompile Include="RigidbodySystem.cpp" />
     <ClCompile Include="Shader.cpp" />
     <ClCompile Include="stb_image.cpp" />
     <ClCompile Include="Structs.cpp" />
@@ -171,6 +174,7 @@
     <ClInclude Include="Library.hpp" />
     <ClInclude Include="MeshComponent.hpp" />
     <ClInclude Include="RenderSystemThirdPerson.hpp" />
+    <ClInclude Include="RigidbodySystem.hpp" />
     <ClInclude Include="TransformComponent.hpp" />
     <ClInclude Include="RenderSystemFPS.hpp" />
     <ClInclude Include="Shader.hpp" />

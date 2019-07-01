@@ -16,7 +16,7 @@ public:
 	void Init(glm::vec3 cp, glm::vec3 cd)
 	{
 		cameraDistance = glm::length(cp);
-		yaw = 0;
+		yaw = lib::DegToRadf(180);
 		if (cp.y != 0)
 		{
 			pitch = atanf(cp.z / cp.y);
