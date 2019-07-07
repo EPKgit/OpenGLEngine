@@ -20,7 +20,7 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
-    <ProjectGuid>{6823F698-5BF1-4CB0-BBDA-02BE841C360D}</ProjectGuid>
+    <ProjectGuid>{1CDFC2F3-1872-48A4-954D-9FEDDB69C2B6}</ProjectGuid>
     <RootNamespace>OpenGLEngine</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
@@ -70,20 +70,8 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <LibraryPath>E:\GitHub\OpenGLEngine\glfw-3.3\build\src\Debug;D:\GitHub\OpenGLEngine\libs;$(LibraryPath)</LibraryPath>
-    <IncludePath>E:\GitHub\OpenGLEngine\include;D:\Github\OpenGLEngine\include;$(IncludePath)</IncludePath>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <LibraryPath>E:\GitHub\OpenGLEngine\glfw-3.3\build\src\Debug;$(LibraryPath)</LibraryPath>
-    <IncludePath>E:\GitHub\OpenGLEngine\include;$(IncludePath)</IncludePath>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <LibraryPath>E:\GitHub\OpenGLEngine\glfw-3.3\build\src\Debug;$(LibraryPath)</LibraryPath>
-    <IncludePath>E:\GitHub\OpenGLEngine\include;$(IncludePath)</IncludePath>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <LibraryPath>E:\GitHub\OpenGLEngine\glfw-3.3\build\src\Debug;$(LibraryPath)</LibraryPath>
-    <IncludePath>E:\GitHub\OpenGLEngine\include;$(IncludePath)</IncludePath>
+    <IncludePath>D:\Github\OpenGLEngine\include;$(IncludePath)</IncludePath>
+    <LibraryPath>D:\Github\OpenGLEngine\libs;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -103,9 +91,6 @@
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
     </ClCompile>
-    <Link>
-      <AdditionalDependencies>opengl32.lib;glfw3.lib;%(AdditionalDependencies)</AdditionalDependencies>
-    </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -119,7 +104,6 @@
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>opengl32.lib;glfw3.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -134,9 +118,43 @@
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>opengl32.lib;glfw3.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
+  <ItemGroup>
+    <Image Include="awesomeface.png" />
+    <Image Include="container.jpg" />
+    <Image Include="wall.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="BaseFragment.frag" />
+    <None Include="BaseVertex.vert" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="CameraComponent.hpp" />
+    <ClInclude Include="Component.hpp" />
+    <ClInclude Include="Constants.hpp" />
+    <ClInclude Include="Delegate.hpp" />
+    <ClInclude Include="Entity.hpp" />
+    <ClInclude Include="EntityManager.hpp" />
+    <ClInclude Include="FollowComponent.hpp" />
+    <ClInclude Include="FollowSystem.hpp" />
+    <ClInclude Include="InputSystem.hpp" />
+    <ClInclude Include="Library.hpp" />
+    <ClInclude Include="MeshComponent.hpp" />
+    <ClInclude Include="RenderSystem.hpp" />
+    <ClInclude Include="RenderSystemFPS.hpp" />
+    <ClInclude Include="RenderSystemThirdPerson.hpp" />
+    <ClInclude Include="RigidbodyComponent.hpp" />
+    <ClInclude Include="RigidbodySystem.hpp" />
+    <ClInclude Include="Shader.hpp" />
+    <ClInclude Include="Singleton.hpp" />
+    <ClInclude Include="stb_image.h" />
+    <ClInclude Include="Structs.hpp" />
+    <ClInclude Include="System.hpp" />
+    <ClInclude Include="Texture.hpp" />
+    <ClInclude Include="Time.hpp" />
+    <ClInclude Include="TransformComponent.hpp" />
+  </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="Constants.cpp" />
@@ -151,7 +169,6 @@
     <ClCompile Include="RenderSystemFPS.cpp" />
     <ClCompile Include="RenderSystemThirdPerson.cpp" />
     <ClCompile Include="RigidbodyComponent.cpp" />
-    <ClCompile Include="RigidbodyComponent.hpp" />
     <ClCompile Include="RigidbodySystem.cpp" />
     <ClCompile Include="Shader.cpp" />
     <ClCompile Include="stb_image.cpp" />
@@ -160,34 +177,6 @@
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="Time.cpp" />
     <ClCompile Include="TransformComponent.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="CameraComponent.hpp" />
-    <ClInclude Include="Component.hpp" />
-    <ClInclude Include="Constants.hpp" />
-    <ClInclude Include="Delegate.hpp" />
-    <ClInclude Include="Entity.hpp" />
-    <ClInclude Include="EntityManager.hpp" />
-    <ClInclude Include="FollowComponent.hpp" />
-    <ClInclude Include="FollowSystem.hpp" />
-    <ClInclude Include="InputSystem.hpp" />
-    <ClInclude Include="Library.hpp" />
-    <ClInclude Include="MeshComponent.hpp" />
-    <ClInclude Include="RenderSystemThirdPerson.hpp" />
-    <ClInclude Include="RigidbodySystem.hpp" />
-    <ClInclude Include="TransformComponent.hpp" />
-    <ClInclude Include="RenderSystemFPS.hpp" />
-    <ClInclude Include="Shader.hpp" />
-    <ClInclude Include="Singleton.hpp" />
-    <ClInclude Include="stb_image.h" />
-    <ClInclude Include="Structs.hpp" />
-    <ClInclude Include="System.hpp" />
-    <ClInclude Include="Texture.hpp" />
-    <ClInclude Include="Time.hpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="BaseFragment.frag" />
-    <None Include="BaseVertex.vert" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -23,7 +23,7 @@ float Clock::Restart()
 	currentTime = std::chrono::steady_clock::now();
 	std::chrono::duration<double> temp = std::chrono::duration_cast<std::chrono::duration<double>>(currentTime - startTime);
 	startTime = std::chrono::steady_clock::now();
-	return temp.count();
+	return (float)temp.count();
 }
 float Clock::GetTime()
 {

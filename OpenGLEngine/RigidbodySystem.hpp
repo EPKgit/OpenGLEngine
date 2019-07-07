@@ -18,9 +18,13 @@ private:
 	std::shared_ptr<RigidbodyComponent> rbptr;
 	std::shared_ptr<TransformComponent> tptr;
 	Time * time;
+
 	float lastStep;
-	glm::vec3 averageAcceleration;
 	void Step(float fixedDeltaTime);
+
+	glm::vec3 currentFrameForce;
+	glm::vec3 averageAcceleration;
+	void PerformMovement(float fixedDeltaTime);
 
 	void ApplyContinousForces();
 
@@ -29,5 +33,8 @@ private:
 	glm::vec3 dragForce;
 	glm::vec3 dragAcceleration;
 	void CalculateDrag();
+
+	glm::vec3 frictionForce;
+	void CalculateFriction();
 };
 #endif // !_RIGIDBODYSYSTEM_HPP

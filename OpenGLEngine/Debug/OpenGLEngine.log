@@ -10,7 +10,6 @@
   RenderSystemFPS.cpp
   RenderSystemThirdPerson.cpp
   RigidbodyComponent.cpp
-  RigidbodyComponent.hpp
   RigidbodySystem.cpp
   Shader.cpp
   stb_image.cpp
@@ -18,22 +17,14 @@
   System.cpp
   Texture.cpp
   Time.cpp
-d:\github\openglengine\openglengine\time.cpp(26): warning C4244: 'return': conversion from '_Rep' to 'float', possible loss of data
-          with
-          [
-              _Rep=double
-          ]
 d:\github\openglengine\openglengine\time.cpp(32): warning C4244: 'return': conversion from '_Rep' to 'float', possible loss of data
           with
           [
               _Rep=double
           ]
-  Generating Code...
-  Compiling...
   TransformComponent.cpp
   Generating Code...
   glad.c
 c:\program files (x86)\windows kits\10\include\10.0.17763.0\shared\minwindef.h(130): warning C4005: 'APIENTRY': macro redefinition
   d:\github\openglengine\include\glad\glad.h(32): note: see previous definition of 'APIENTRY'
-Debug\RigidbodyComponent.obj : warning LNK4042: object specified more than once; extras ignored
   OpenGLEngine.vcxproj -> D:\Github\OpenGLEngine\Debug\OpenGLEngine.exe

@@ -30,22 +30,32 @@ void RigidbodySystem::Step(float fixedDeltaTime)
 	{
 		rbptr = entities[x]->getComp<RigidbodyComponent>();
 		tptr = entities[x]->getComp<TransformComponent>();
-
-		ApplyContinousForces();
-	
-		tptr->position += rbptr->velocity * fixedDeltaTime + (0.5f * rbptr->acceleration * fixedDeltaTime * fixedDeltaTime); // velocity verlet integration
-		if (tptr->position.y < 0) //if hitting the ground
-		{
-			tptr->position.y = 0;
-			rbptr->acceleration.y = 0;
-			rbptr->velocity.y = 0;
-		}
-
-		CalculateForces();
-		
-		rbptr->velocity += averageAcceleration * fixedDeltaTime;
-		std::cout << averageAcceleration.x << " " << averageAcceleration.y << " " << averageAcceleration.z << std::endl;
+		PerformMovement(fixedDeltaTime);
+		//CheckCollisions
+		//ResolveCollisions
 	}
+}
+
+inline void RigidbodySystem::PerformMovement(float fixedDeltaTime)
+{
+	ApplyContinousForces();
+	rbptr->acceleration = currentFrameForce;
+
+	tptr->position += rbptr->velocity * fixedDeltaTime + rbptr->acceleration * fixedDeltaTime * fixedDeltaTime;
+	if (tptr->position.y < 0)
+	{
+		tptr->position.y = 0;
+		rbptr->velocity.y = 0;
+	}
+	
+	averageAcceleration = rbptr->acceleration;
+	averageAcceleration += currentFrameForce * rbptr->GetInverseMass();
+	rbptr->velocity += averageAcceleration * fixedDeltaTime;
+
+	rbptr->velocity *= rbptr->GetScaledDampingCoeff();
+	//std::cout << rbptr->velocity.x << " " << rbptr->velocity.y << " " << rbptr->velocity.z << std::endl;
+
+	currentFrameForce = constants::gravity;
 }
 
 inline void RigidbodySystem::ApplyContinousForces()
@@ -53,8 +63,8 @@ inline void RigidbodySystem::ApplyContinousForces()
 	for (auto x = rbptr->forces.begin(); x != rbptr->forces.end();)
 	{
 		if ((*x).second > time->GetCurrentTime())
-		{
-			rbptr->acceleration += (*x).first;
+  		{
+			currentFrameForce+= (*x).first;
 			++x;
 		}
 		else
@@ -62,19 +72,4 @@ inline void RigidbodySystem::ApplyContinousForces()
 			x = rbptr->forces.erase(x);
 		}
 	}
-}
-
-inline void RigidbodySystem::CalculateForces()
-{
-	averageAcceleration = rbptr->acceleration;
-	CalculateDrag();
-	averageAcceleration += rbptr->acceleration;
-	averageAcceleration *= 0.5;
-}
-
-void RigidbodySystem::CalculateDrag()
-{
-	dragForce = 0.5f * rbptr->dragCoeff * rbptr->velocity * abs(rbptr->velocity);
-	dragAcceleration = dragForce / rbptr->mass;
-	rbptr->acceleration = constants::gravity - dragAcceleration;
 }

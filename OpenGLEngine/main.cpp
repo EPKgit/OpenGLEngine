@@ -44,17 +44,19 @@ void PROCESSINPUT_TEMP(GLFWwindow * window)
 
 void GameLoop(GLFWwindow * window)
 {
-	//lib::CreateCubeEntity();
-	std::shared_ptr<Entity> e = lib::CreateCameraEntityThirdPerson();
+	//std::shared_ptr<Entity> e = lib::CreateCameraEntityThirdPerson();
+	std::shared_ptr<Entity> e = lib::CreateCameraEntityFPS();
 	e->getComp<TransformComponent>()->position = { 0, 0, 2 };
 	e = lib::CreateCubeEntity();
 	std::shared_ptr<RigidbodyComponent> rb = e->addComp<RigidbodyComponent>();
-	rb->ApplyForce({ 0, 1, 0 }, 30, 1);
-	rb->ApplyForce({ 1, 0, 0 }, 10, 1);
+	rb->velocity.x = 1;
+	/*rb->ApplyForce({ 0, 1, 0 }, 30, 1);
+	rb->ApplyForce({ 1, 0, 0 }, 10, 1);*/
 
 
 	float deltaTime;
-	RenderSystemThirdPerson rs;
+	//RenderSystemThirdPerson rs;
+	RenderSystemFPS rs;
 	rs.Run(0);
 	InputSystem is(&rs, window);
 	RigidbodySystem  rbs;

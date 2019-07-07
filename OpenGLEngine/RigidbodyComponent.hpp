@@ -14,9 +14,28 @@ public:
 	void ApplyForce(glm::vec3 direction, float amount, float duration = 0);
 	std::vector<std::pair<glm::vec3, float>> forces;
 	glm::vec3 velocity;
-	glm::vec3 acceleration;
+	glm::vec3 acceleration;	
+
+	float GetMass() const { return mass; }
+	float GetInverseMass() const { return inverseMass; }
+	void SetInfiniteMass() { inverseMass = 0; }
+	void SetMass(float f)
+	{
+		mass = f;
+		inverseMass = 1.0f / f;
+	}
+	float GetDampingCoeff() const { return dampingCoeff; }
+	float GetScaledDampingCoeff() const { return scaledDampingCoeff; }
+	void SetDampingCoeff(float f)
+	{
+		dampingCoeff = f;
+		scaledDampingCoeff = powf(dampingCoeff, constants::fixedTimeStep);
+	}
+	
+private:
 	float mass;
-	float frictionCoeff;
-	float dragCoeff;
+	float inverseMass;
+	float dampingCoeff;
+	float scaledDampingCoeff;
 };
 #endif // !_RIGIDBODYCOMPONENT_HPP
