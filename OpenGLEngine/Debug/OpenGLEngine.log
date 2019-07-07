@@ -1,30 +1,12 @@
-﻿  Component.cpp
-  Constants.cpp
+﻿  ComponentLookup.cpp
   Entity.cpp
   EntityManager.cpp
   FollowSystem.cpp
-  InputSystem.cpp
   Library.cpp
-  main.cpp
-  MeshComponent.cpp
   RenderSystemFPS.cpp
   RenderSystemThirdPerson.cpp
-  RigidbodyComponent.cpp
   RigidbodySystem.cpp
-  Shader.cpp
-  stb_image.cpp
-  Structs.cpp
   System.cpp
-  Texture.cpp
-  Time.cpp
-d:\github\openglengine\openglengine\time.cpp(32): warning C4244: 'return': conversion from '_Rep' to 'float', possible loss of data
-          with
-          [
-              _Rep=double
-          ]
-  TransformComponent.cpp
+  main.cpp
   Generating Code...
-  glad.c
-c:\program files (x86)\windows kits\10\include\10.0.17763.0\shared\minwindef.h(130): warning C4005: 'APIENTRY': macro redefinition
-  d:\github\openglengine\include\glad\glad.h(32): note: see previous definition of 'APIENTRY'
-  OpenGLEngine.vcxproj -> D:\Github\OpenGLEngine\Debug\OpenGLEngine.exe
+  OpenGLEngine.vcxproj -> E:\GitHub\OpenGLEngine\Debug\OpenGLEngine.exe

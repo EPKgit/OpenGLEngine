@@ -4,6 +4,7 @@
 #include <glm/glm.hpp>
 
 #include "Component.hpp"
+#include "Library.hpp"
 
 class CameraComponent : public Component
 {
@@ -20,6 +21,10 @@ public:
 		if (cp.y != 0)
 		{
 			pitch = atanf(cp.z / cp.y);
+		}
+		else
+		{
+			pitch = 0;
 		}
 	}
 	glm::vec3 cameraOffset;

@@ -18,4 +18,5 @@ public:
 	glm::vec3 offset;
 	TransformComponent * target;
 };
+
 #endif // !_FOLLOWCOMPONENT_HPP

@@ -70,8 +70,20 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>D:\Github\OpenGLEngine\include;$(IncludePath)</IncludePath>
-    <LibraryPath>D:\Github\OpenGLEngine\libs;$(LibraryPath)</LibraryPath>
+    <IncludePath>E:\GitHub\OpenGLEngine\include;$(IncludePath)</IncludePath>
+    <LibraryPath>E:\GitHub\OpenGLEngine\libs;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <IncludePath>E:\GitHub\OpenGLEngine\include;$(IncludePath)</IncludePath>
+    <LibraryPath>E:\GitHub\OpenGLEngine\libs;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <IncludePath>E:\GitHub\OpenGLEngine\include;$(IncludePath)</IncludePath>
+    <LibraryPath>E:\GitHub\OpenGLEngine\libs;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <IncludePath>E:\GitHub\OpenGLEngine\include;$(IncludePath)</IncludePath>
+    <LibraryPath>E:\GitHub\OpenGLEngine\libs;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -132,6 +144,7 @@
   <ItemGroup>
     <ClInclude Include="CameraComponent.hpp" />
     <ClInclude Include="Component.hpp" />
+    <ClInclude Include="ComponentLookup.hpp" />
     <ClInclude Include="Constants.hpp" />
     <ClInclude Include="Delegate.hpp" />
     <ClInclude Include="Entity.hpp" />
@@ -157,6 +170,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Component.cpp" />
+    <ClCompile Include="ComponentLookup.cpp" />
     <ClCompile Include="Constants.cpp" />
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="EntityManager.cpp" />

@@ -5,8 +5,10 @@
 #include <vector>
 #include <memory>
 
+#include "Library.hpp"
 #include "Component.hpp"
 #include "Constants.hpp"
+#include "ComponentLookup.hpp"
 
 class Entity
 {
@@ -47,15 +49,13 @@ private:
 template<class T>
 bool Entity::hasComps()
 {
-	T c;
-	return compBits.test(c.type);
+	return compBits.test(ComponentLookup::LookupComponent<T>());
 };
 
 template<class T1, class T2, class... rest>
 bool Entity::hasComps()
 {
-	T1 c;
-	if (compBits.test(c.type))
+	if (compBits.test(ComponentLookup::LookupComponent<T1>()))
 	{
 		return hasComps<T2, rest ...>();
 	}
@@ -65,12 +65,12 @@ bool Entity::hasComps()
 template<class T>
 bool Entity::removeComp()
 {
-	T c;
+	constants::ComponentType c = ComponentLookup::LookupComponent<T>();
 	for (unsigned int i; i < comps.size(); ++i)
 	{
-		if (comps[i]->type == c.type)
+		if (comps[i]->type == c)
 		{
-			compBits.reset(c.type);
+			compBits.reset(c);
 			comps.remove(i);
 			return true;
 		}
@@ -115,12 +115,12 @@ std::shared_ptr<T> Entity::addComp(std::shared_ptr<T> c)
 template<class T>
 std::shared_ptr<T> Entity::getComp()
 {
-	T c;
+	constants::ComponentType c = ComponentLookup::LookupComponent<T>();
 	if (hasComps<T>())
 	{
 		for (unsigned int i = 0; i < comps.size(); ++i)
 		{
-			if (comps[i]->type == c.type)
+			if (comps[i]->type == c)
 			{
 				return std::static_pointer_cast<T>(comps[i]);
 			}

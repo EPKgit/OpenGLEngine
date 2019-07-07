@@ -1,8 +1,11 @@
 #include "EntityManager.hpp"
 
+#include "ComponentLookup.hpp"
+
 EntityManager::EntityManager()
 {
 	numEntities = 0;
+	ComponentLookup::SetupMap();
 }
 
 std::shared_ptr<Entity> EntityManager::createEntity()

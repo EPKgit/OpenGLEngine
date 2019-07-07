@@ -3,7 +3,6 @@
 
 #include "glm/glm.hpp"
 
-#include "Library.hpp"
 #include "Singleton.hpp"
 
 namespace constants
@@ -15,8 +14,8 @@ namespace constants
 
 	const int maxComponents = 128;
 
-	const unsigned int screenHeight = (int)(768 * 2.5);
-	const unsigned int screenWidth = (int)(1024 * 2.5);
+	const unsigned int screenHeight = (int)(768);
+	const unsigned int screenWidth = (int)(1024);
 	const float fieldOfView = 90.0f;
 	const float zNear = 0.1f;
 	const float zFar = 100.0f;

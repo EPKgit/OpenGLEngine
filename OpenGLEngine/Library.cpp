@@ -87,7 +87,8 @@ std::shared_ptr<Entity> lib::CreateCameraEntityFPS()
 {
 	std::shared_ptr<Entity> e = EntityManager::GetInstance()->createEntity();
 	e->addComp<TransformComponent>();
-	e->addComp<CameraComponent, glm::vec3>({ 0, 0, 3 });
+	//e->addComp<CameraComponent, glm::vec3>({ 0, 0, 3 });
+	e->addComp<CameraComponent>();
 	return e;
 }
 
