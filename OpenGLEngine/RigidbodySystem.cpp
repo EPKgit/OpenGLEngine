@@ -38,21 +38,18 @@ void RigidbodySystem::Step(float fixedDeltaTime)
 
 inline void RigidbodySystem::PerformMovement(float fixedDeltaTime)
 {
-	ApplyContinousForces();
-	rbptr->acceleration = currentFrameForce;
-
-	tptr->position += rbptr->velocity * fixedDeltaTime + rbptr->acceleration * fixedDeltaTime * fixedDeltaTime;
+	tptr->position += rbptr->velocity * fixedDeltaTime;
 	if (tptr->position.y < 0)
 	{
 		tptr->position.y = 0;
 		rbptr->velocity.y = 0;
 	}
-	
+	ApplyContinousForces();
 	averageAcceleration = rbptr->acceleration;
-	averageAcceleration += currentFrameForce * rbptr->GetInverseMass();
+	averageAcceleration += currentFrameForce * rbptr->inverseMass;
 	rbptr->velocity += averageAcceleration * fixedDeltaTime;
 
-	rbptr->velocity *= rbptr->GetScaledDampingCoeff();
+	rbptr->velocity *= rbptr->scaledDampingCoeff;
 	//std::cout << rbptr->velocity.x << " " << rbptr->velocity.y << " " << rbptr->velocity.z << std::endl;
 
 	currentFrameForce = constants::gravity;
@@ -64,7 +61,7 @@ inline void RigidbodySystem::ApplyContinousForces()
 	{
 		if ((*x).second > time->GetCurrentTime())
   		{
-			currentFrameForce+= (*x).first;
+			currentFrameForce += (*x).first;
 			++x;
 		}
 		else

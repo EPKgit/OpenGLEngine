@@ -1,12 +1,2 @@
-﻿  ComponentLookup.cpp
-  Entity.cpp
-  EntityManager.cpp
-  FollowSystem.cpp
-  Library.cpp
-  RenderSystemFPS.cpp
-  RenderSystemThirdPerson.cpp
-  RigidbodySystem.cpp
-  System.cpp
-  main.cpp
-  Generating Code...
-  OpenGLEngine.vcxproj -> E:\GitHub\OpenGLEngine\Debug\OpenGLEngine.exe
+﻿  main.cpp
+  OpenGLEngine.vcxproj -> D:\Github\OpenGLEngine\Debug\OpenGLEngine.exe

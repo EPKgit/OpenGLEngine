@@ -70,8 +70,8 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>E:\GitHub\OpenGLEngine\include;$(IncludePath)</IncludePath>
-    <LibraryPath>E:\GitHub\OpenGLEngine\libs;$(LibraryPath)</LibraryPath>
+    <IncludePath>E:\GitHub\OpenGLEngine\include;D:\Github\OpenGLEngine\include;$(IncludePath)</IncludePath>
+    <LibraryPath>E:\GitHub\OpenGLEngine\libs;D:\Github\OpenGLEngine\libs;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <IncludePath>E:\GitHub\OpenGLEngine\include;$(IncludePath)</IncludePath>
@@ -91,6 +91,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include\</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <AdditionalDependencies>opengl32.lib;glfw3.lib;%(AdditionalDependencies)</AdditionalDependencies>

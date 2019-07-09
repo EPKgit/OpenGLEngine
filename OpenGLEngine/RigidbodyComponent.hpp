@@ -2,6 +2,7 @@
 #define _RIGIDBODYCOMPONENT_HPP
 
 #include <vector>
+#include <limits>
 
 #include "glm/vec3.hpp"
 
@@ -15,17 +16,21 @@ public:
 	std::vector<std::pair<glm::vec3, float>> forces;
 	glm::vec3 velocity;
 	glm::vec3 acceleration;	
+	float mass;
+	float inverseMass;
+	float dampingCoeff;
+	float scaledDampingCoeff;
 
-	float GetMass() const { return mass; }
-	float GetInverseMass() const { return inverseMass; }
-	void SetInfiniteMass() { inverseMass = 0; }
+	void SetInfiniteMass() 
+	{ 
+		inverseMass = 0; 
+		mass = std::numeric_limits<float>::max(); 
+	}
 	void SetMass(float f)
 	{
 		mass = f;
 		inverseMass = 1.0f / f;
 	}
-	float GetDampingCoeff() const { return dampingCoeff; }
-	float GetScaledDampingCoeff() const { return scaledDampingCoeff; }
 	void SetDampingCoeff(float f)
 	{
 		dampingCoeff = f;
@@ -33,9 +38,5 @@ public:
 	}
 	
 private:
-	float mass;
-	float inverseMass;
-	float dampingCoeff;
-	float scaledDampingCoeff;
 };
 #endif // !_RIGIDBODYCOMPONENT_HPP

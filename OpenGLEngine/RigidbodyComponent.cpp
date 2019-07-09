@@ -6,8 +6,7 @@ RigidbodyComponent::RigidbodyComponent(float f, glm::vec3 v, glm::vec3 a) : mass
 {
 	type = constants::ComponentType::RigidbodyComponent;
 	inverseMass = 1.0f / f;
-	dampingCoeff = 0.95f;
-	scaledDampingCoeff = 0.99948719858f;
+	SetDampingCoeff(0.8f);
 }
 
 void RigidbodyComponent::ApplyForce(glm::vec3 direction, float amount, float duration)
