@@ -20,6 +20,7 @@
 #include "RigidbodyComponent.hpp"
 #include "Entity.hpp"
 #include "TransformComponent.hpp"
+#include "SpringForceComponent.hpp"
 
 void window_resize_callback(GLFWwindow* window, int width, int height)
 {
@@ -47,11 +48,26 @@ void GameLoop(GLFWwindow * window)
 	//std::shared_ptr<Entity> e = lib::CreateCameraEntityThirdPerson();
 	std::shared_ptr<Entity> e = lib::CreateCameraEntityFPS();
 	e->getComp<TransformComponent>()->position = { 0, 0, 2 };
+
+	//e = lib::CreateCubeEntity();
+	//e->getComp<TransformComponent>()->scale.z = 100;
+	//e->getComp<TransformComponent>()->scale.x = 100;
+	//e->getComp<TransformComponent>()->scale.y = 0.5;
+	//e->getComp<TransformComponent>()->position.y = -1;
+	//e->getComp<MeshComponent>()->textures.clear();
+	///*std::shared_ptr<RigidbodyComponent> rb = e->addComp<RigidbodyComponent>();
+	//rb->SetInfiniteMass();*/
+
 	e = lib::CreateCubeEntity();
-	std::shared_ptr<RigidbodyComponent> rb = e->addComp<RigidbodyComponent>();
-	//rb->velocity.x = 1;
-	rb->ApplyForce({ 0, 1, 0 }, 15, 1);
-	rb->ApplyForce({ 1, 0, 0 }, 3, 1);
+	e->addComp<RigidbodyComponent>();
+	e->addComp<SpringForceComponent, glm::vec3, float, float>({ 0, 6, 0 }, 10.0f, 1.0f);
+	std::shared_ptr<TransformComponent> tptr = e->getComp<TransformComponent>();
+	tptr->position = { 0, 5, 0 };
+
+	e = lib::CreateCubeEntity();
+	e->addComp<RigidbodyComponent>();
+	e->getComp<TransformComponent>()->position = { 3, 0, 0 };
+	e->addComp<SpringForceComponent, std::shared_ptr<TransformComponent>, float, float>(tptr, 10.0f, 3.0f);
 
 
 	float deltaTime;

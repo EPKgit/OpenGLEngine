@@ -4,6 +4,8 @@
 #include "glm/vec3.hpp"
 
 #include "System.hpp"
+#include "PhysicsSubsystems.hpp"
+
 
 class RigidbodyComponent;
 class TransformComponent;
@@ -18,23 +20,19 @@ private:
 	std::shared_ptr<RigidbodyComponent> rbptr;
 	std::shared_ptr<TransformComponent> tptr;
 	Time * time;
+	PhysicsSubsystems subsystems;
 
 	float lastStep;
 	void Step(float fixedDeltaTime);
 
-	glm::vec3 currentFrameForce;
-	glm::vec3 averageAcceleration;
 	void PerformMovement(float fixedDeltaTime);
 
 	void ApplyContinousForces();
-
-	void CalculateForces();
 	
-	glm::vec3 dragForce;
-	glm::vec3 dragAcceleration;
 	void CalculateDrag();
 
-	glm::vec3 frictionForce;
+	void CalculateDamping();
+
 	void CalculateFriction();
 };
 #endif // !_RIGIDBODYSYSTEM_HPP

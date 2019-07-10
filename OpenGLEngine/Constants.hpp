@@ -9,7 +9,13 @@ namespace constants
 {
 	enum ComponentType
 	{
-		Base = 0, MeshComponent = 1, TransformComponent = 2, CameraComponent = 3, RigidbodyComponent = 4, FollowComponent = 69
+		Base = 0, 
+		MeshComponent = 1, 
+		TransformComponent = 2, 
+		CameraComponent = 3, 
+		RigidbodyComponent = 4, 
+		SpringForceComponent = 5, 
+		FollowComponent = 69
 	};
 
 	const int maxComponents = 128;
@@ -29,8 +35,8 @@ namespace constants
 	public:
 		bool wireframe = false;
 		bool printCameraInfo = false;
-		float udSensitivity = 75.0f;
-		float lrSensitivity = 75.0f;
+		float udSensitivity = 25.0f;
+		float lrSensitivity = 25.0f;
 	};
 };
 

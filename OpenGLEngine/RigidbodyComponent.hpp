@@ -15,27 +15,18 @@ public:
 	void ApplyForce(glm::vec3 direction, float amount, float duration = 0);
 	std::vector<std::pair<glm::vec3, float>> forces;
 	glm::vec3 velocity;
-	glm::vec3 acceleration;	
+	glm::vec3 constantAcceleration;	
+	glm::vec3 currentFrameForce;
 	float mass;
 	float inverseMass;
 	float dampingCoeff;
 	float scaledDampingCoeff;
+	float dragCoefficient1;
+	float dragCoefficient2;
 
-	void SetInfiniteMass() 
-	{ 
-		inverseMass = 0; 
-		mass = std::numeric_limits<float>::max(); 
-	}
-	void SetMass(float f)
-	{
-		mass = f;
-		inverseMass = 1.0f / f;
-	}
-	void SetDampingCoeff(float f)
-	{
-		dampingCoeff = f;
-		scaledDampingCoeff = powf(dampingCoeff, constants::fixedTimeStep);
-	}
+	void SetInfiniteMass();
+	void SetMass(float f);
+	void SetDampingCoeff(float f);
 	
 private:
 };

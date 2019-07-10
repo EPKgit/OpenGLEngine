@@ -155,13 +155,14 @@
     <ClInclude Include="InputSystem.hpp" />
     <ClInclude Include="Library.hpp" />
     <ClInclude Include="MeshComponent.hpp" />
-    <ClInclude Include="RenderSystem.hpp" />
     <ClInclude Include="RenderSystemFPS.hpp" />
     <ClInclude Include="RenderSystemThirdPerson.hpp" />
     <ClInclude Include="RigidbodyComponent.hpp" />
     <ClInclude Include="RigidbodySystem.hpp" />
     <ClInclude Include="Shader.hpp" />
     <ClInclude Include="Singleton.hpp" />
+    <ClInclude Include="SpringForceComponent.hpp" />
+    <ClInclude Include="PhysicsSubsystems.hpp" />
     <ClInclude Include="stb_image.h" />
     <ClInclude Include="Structs.hpp" />
     <ClInclude Include="System.hpp" />
@@ -181,6 +182,7 @@
     <ClCompile Include="Library.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MeshComponent.cpp" />
+    <ClCompile Include="PhysicsSubsystems.cpp" />
     <ClCompile Include="RenderSystemFPS.cpp" />
     <ClCompile Include="RenderSystemThirdPerson.cpp" />
     <ClCompile Include="RigidbodyComponent.cpp" />

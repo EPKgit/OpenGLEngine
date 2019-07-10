@@ -13,43 +13,43 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Source Files\Physics">
+      <UniqueIdentifier>{328f482c-daf8-4f4e-9273-887e25684887}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Rendering">
+      <UniqueIdentifier>{9717164c-3e5f-40ea-9f73-cd4577c94484}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Shaders/Images">
+      <UniqueIdentifier>{701e0a44-70ad-4137-b968-2b42896cb2e6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\ECS Files">
+      <UniqueIdentifier>{cedceb29-3f46-43eb-a15d-e363ce3f8815}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\DataStructures">
+      <UniqueIdentifier>{540a6dea-6c1a-4107-9564-a89c8cdc898f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Image Include="awesomeface.png">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Shaders/Images</Filter>
     </Image>
     <Image Include="container.jpg">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Shaders/Images</Filter>
     </Image>
     <Image Include="wall.jpg">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Shaders/Images</Filter>
     </Image>
   </ItemGroup>
   <ItemGroup>
     <None Include="BaseFragment.frag">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Shaders/Images</Filter>
     </None>
     <None Include="BaseVertex.vert">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Shaders/Images</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="CameraComponent.hpp">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Component.hpp">
-      <Filter>Source Files</Filter>
-    </ClInclude>
     <ClInclude Include="Constants.hpp">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Delegate.hpp">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Entity.hpp">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="EntityManager.hpp">
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="FollowComponent.hpp">
@@ -64,69 +64,75 @@
     <ClInclude Include="Library.hpp">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="MeshComponent.hpp">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="RenderSystem.hpp">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="RenderSystemFPS.hpp">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="RenderSystemThirdPerson.hpp">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="RigidbodyComponent.hpp">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="RigidbodySystem.hpp">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Shader.hpp">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Singleton.hpp">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="stb_image.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
     <ClInclude Include="Structs.hpp">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="System.hpp">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Texture.hpp">
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="Time.hpp">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="TransformComponent.hpp">
-      <Filter>Source Files</Filter>
+    <ClInclude Include="RigidbodyComponent.hpp">
+      <Filter>Source Files\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="RigidbodySystem.hpp">
+      <Filter>Source Files\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="CameraComponent.hpp">
+      <Filter>Source Files\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="stb_image.h">
+      <Filter>Source Files\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="Component.hpp">
+      <Filter>Source Files\ECS Files</Filter>
     </ClInclude>
     <ClInclude Include="ComponentLookup.hpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\ECS Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Entity.hpp">
+      <Filter>Source Files\ECS Files</Filter>
+    </ClInclude>
+    <ClInclude Include="EntityManager.hpp">
+      <Filter>Source Files\ECS Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MeshComponent.hpp">
+      <Filter>Source Files\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderSystemFPS.hpp">
+      <Filter>Source Files\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderSystemThirdPerson.hpp">
+      <Filter>Source Files\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="Shader.hpp">
+      <Filter>Source Files\Shaders/Images</Filter>
+    </ClInclude>
+    <ClInclude Include="Delegate.hpp">
+      <Filter>Source Files\DataStructures</Filter>
+    </ClInclude>
+    <ClInclude Include="Singleton.hpp">
+      <Filter>Source Files\DataStructures</Filter>
+    </ClInclude>
+    <ClInclude Include="System.hpp">
+      <Filter>Source Files\ECS Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Texture.hpp">
+      <Filter>Source Files\Shaders/Images</Filter>
+    </ClInclude>
+    <ClInclude Include="SpringForceComponent.hpp">
+      <Filter>Source Files\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="TransformComponent.hpp">
+      <Filter>Source Files\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="PhysicsSubsystems.hpp">
+      <Filter>Source Files\Physics</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Component.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Constants.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Entity.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="EntityManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="FollowSystem.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="glad.c">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="InputSystem.cpp">
@@ -138,44 +144,59 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="MeshComponent.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="RenderSystemFPS.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="RenderSystemThirdPerson.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="RigidbodyComponent.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="RigidbodySystem.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Shader.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="stb_image.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Structs.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="System.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Texture.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Time.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="TransformComponent.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="RigidbodyComponent.cpp">
+      <Filter>Source Files\Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="RigidbodySystem.cpp">
+      <Filter>Source Files\Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="stb_image.cpp">
+      <Filter>Source Files\Rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="Component.cpp">
+      <Filter>Source Files\ECS Files</Filter>
     </ClCompile>
     <ClCompile Include="ComponentLookup.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\ECS Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Entity.cpp">
+      <Filter>Source Files\ECS Files</Filter>
+    </ClCompile>
+    <ClCompile Include="EntityManager.cpp">
+      <Filter>Source Files\ECS Files</Filter>
+    </ClCompile>
+    <ClCompile Include="glad.c">
+      <Filter>Source Files\Rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="MeshComponent.cpp">
+      <Filter>Source Files\Rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="RenderSystemFPS.cpp">
+      <Filter>Source Files\Rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="RenderSystemThirdPerson.cpp">
+      <Filter>Source Files\Rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="Shader.cpp">
+      <Filter>Source Files\Shaders/Images</Filter>
+    </ClCompile>
+    <ClCompile Include="System.cpp">
+      <Filter>Source Files\ECS Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Texture.cpp">
+      <Filter>Source Files\Shaders/Images</Filter>
+    </ClCompile>
+    <ClCompile Include="TransformComponent.cpp">
+      <Filter>Source Files\Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="PhysicsSubsystems.cpp">
+      <Filter>Source Files\Physics</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
