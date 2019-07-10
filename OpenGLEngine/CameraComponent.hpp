@@ -9,7 +9,8 @@
 class CameraComponent : public Component
 {
 public:
-	CameraComponent(glm::vec3 cp = { 0, 0, 0 }, glm::vec3 cd = { 0, 0, -1 }) : cameraOffset(cp), cameraDirection(cd) 
+	CameraComponent(std::weak_ptr<Entity> e, glm::vec3 cp = { 0, 0, 0 }, glm::vec3 cd = { 0, 0, -1 }) 
+		: Component(e), cameraOffset(cp), cameraDirection(cd)
 	{
 		type = constants::ComponentType::CameraComponent;
 		Init(cp, cd);

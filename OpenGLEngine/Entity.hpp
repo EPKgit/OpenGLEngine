@@ -10,7 +10,7 @@
 #include "Constants.hpp"
 #include "ComponentLookup.hpp"
 
-class Entity
+class Entity : public std::enable_shared_from_this<Entity>
 {
 public:
 	unsigned int ID;
@@ -66,12 +66,12 @@ template<class T>
 bool Entity::removeComp()
 {
 	constants::ComponentType c = ComponentLookup::LookupComponent<T>();
-	for (unsigned int i; i < comps.size(); ++i)
+	for (auto x = comps.begin(); x != comps.end(); ++x)
 	{
-		if (comps[i]->type == c)
+		if ((*x)->type == c)
 		{
 			compBits.reset(c);
-			comps.remove(i);
+			comps.erase(x);
 			return true;
 		}
 	}
@@ -85,7 +85,9 @@ std::shared_ptr<T> Entity::addComp()
 	{
 		return nullptr;
 	}
-	std::shared_ptr<T> c = std::make_shared<T>();
+	std::weak_ptr<Entity> e = weak_from_this();
+	std::shared_ptr<Entity> e2 = shared_from_this();
+	std::shared_ptr<T> c = std::make_shared<T>(this->weak_from_this());
 	return addComp<T>(c);
 }
 
@@ -96,7 +98,7 @@ std::shared_ptr<T> Entity::addComp(Args ...args)
 	{
 		return nullptr;
 	}
-	std::shared_ptr<T> c = std::make_shared<T>(args...);
+	std::shared_ptr<T> c = std::make_shared<T>(this->weak_from_this(), args...);
 	return addComp<T>(c);
 }
 
@@ -109,6 +111,8 @@ std::shared_ptr<T> Entity::addComp(std::shared_ptr<T> c)
 	}
 	compBits.set(c->type);
 	comps.push_back(c);
+	std::shared_ptr<Component> cptr = std::static_pointer_cast<Component>(c);
+	cptr->entity = weak_from_this();
 	return c;
 }
 
@@ -118,11 +122,11 @@ std::shared_ptr<T> Entity::getComp()
 	constants::ComponentType c = ComponentLookup::LookupComponent<T>();
 	if (hasComps<T>())
 	{
-		for (unsigned int i = 0; i < comps.size(); ++i)
+		for (unsigned int x = 0; x < comps.size(); ++x)
 		{
-			if (comps[i]->type == c)
+			if (comps[x]->type == c)
 			{
-				return std::static_pointer_cast<T>(comps[i]);
+				return std::static_pointer_cast<T>(comps[x]);
 			}
 		}
 	}

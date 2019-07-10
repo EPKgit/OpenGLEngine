@@ -55,19 +55,19 @@ void GameLoop(GLFWwindow * window)
 	//e->getComp<TransformComponent>()->scale.y = 0.5;
 	//e->getComp<TransformComponent>()->position.y = -1;
 	//e->getComp<MeshComponent>()->textures.clear();
-	///*std::shared_ptr<RigidbodyComponent> rb = e->addComp<RigidbodyComponent>();
-	//rb->SetInfiniteMass();*/
+	//std::shared_ptr<RigidbodyComponent> rb = e->addComp<RigidbodyComponent>();
+	//rb->SetInfiniteMass();
 
 	e = lib::CreateCubeEntity();
 	e->addComp<RigidbodyComponent>();
-	e->addComp<SpringForceComponent, glm::vec3, float, float>({ 0, 6, 0 }, 10.0f, 1.0f);
+	e->addComp<SpringForceComponent, glm::vec3, float, float>({ 0, 3, 0 }, 10.0f, 1.0f);
 	std::shared_ptr<TransformComponent> tptr = e->getComp<TransformComponent>();
-	tptr->position = { 0, 5, 0 };
+	tptr->position = { 0, 0, 0 };
 
-	e = lib::CreateCubeEntity();
+	/*e = lib::CreateCubeEntity();
 	e->addComp<RigidbodyComponent>();
 	e->getComp<TransformComponent>()->position = { 3, 0, 0 };
-	e->addComp<SpringForceComponent, std::shared_ptr<TransformComponent>, float, float>(tptr, 10.0f, 3.0f);
+	e->addComp<SpringForceComponent, std::shared_ptr<TransformComponent>, float, float>(tptr, 10.0f, 3.0f);*/
 
 
 	float deltaTime;

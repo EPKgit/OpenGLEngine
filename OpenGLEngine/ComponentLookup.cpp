@@ -9,4 +9,5 @@ void ComponentLookup::SetupMap()
 	ComponentLookup::lookup[typeid(CameraComponent)] = constants::ComponentType::CameraComponent;
 	ComponentLookup::lookup[typeid(RigidbodyComponent)] = constants::ComponentType::RigidbodyComponent;
 	ComponentLookup::lookup[typeid(FollowComponent)] = constants::ComponentType::FollowComponent;
+	ComponentLookup::lookup[typeid(SpringForceComponent)] = constants::ComponentType::SpringForceComponent;
 }

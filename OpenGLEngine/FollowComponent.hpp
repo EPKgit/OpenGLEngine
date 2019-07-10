@@ -10,11 +10,10 @@ class TransformComponent;
 class FollowComponent : public Component
 {
 public:
-	FollowComponent(TransformComponent * t, glm::vec3 o = { 0, 0, 0 }) : offset(o), target(t) 
+	FollowComponent(std::weak_ptr<Entity> e, TransformComponent * t, glm::vec3 o = { 0, 0, 0 }) : Component(e), offset(o), target(t)
 	{
 		type = constants::ComponentType::FollowComponent;
 	}
-	FollowComponent() : FollowComponent(nullptr) { }
 	glm::vec3 offset;
 	TransformComponent * target;
 };

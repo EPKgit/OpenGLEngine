@@ -12,6 +12,7 @@
 #include "CameraComponent.hpp"
 #include "RigidbodyComponent.hpp"
 #include "FollowComponent.hpp"
+#include "SpringForceComponent.hpp"
 
 class ComponentLookup
 {

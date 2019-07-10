@@ -1,8 +1,22 @@
 #ifndef _STRUCTS_HPP
 #define _STRUCTS_HPP
 
+#include <memory>
+
+#include "glm/vec3.hpp"
+
+class RigidbodyComponent;
+
 namespace structs
 {
+	struct collision
+	{
+		std::shared_ptr<RigidbodyComponent> a;
+		std::shared_ptr<RigidbodyComponent> b;
+		float restitutionCoeff;
+		glm::vec3 collisionNormal;
+		float overlapAmount;
+	};
 		/*bool ImportFromFile(std::string fileName)
 		{
 			std::ifstream infile(fileName);

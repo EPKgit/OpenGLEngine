@@ -28,13 +28,13 @@ public:
 	std::vector<unsigned int> indices;
 	std::vector<Texture> textures;
 	Shader s;
-	MeshComponent();
-	MeshComponent(	std::vector<float> *v, std::vector<unsigned int> *i, bool color = true, bool tex = true);
-	MeshComponent(	std::vector<float> v, std::vector<unsigned int> i, bool color = true, bool tex = true) : 
-					MeshComponent::MeshComponent(&v, &i, color, tex) { };
-	MeshComponent(	std::vector<float> *v, bool color = true, bool tex = true);
-	MeshComponent(	std::vector<float> v, bool color = true, bool tex = true) : 
-					MeshComponent::MeshComponent(&v, color, tex) { };
+	MeshComponent(	std::weak_ptr<Entity> e);
+	MeshComponent(	std::weak_ptr<Entity> e, std::vector<float> *v, std::vector<unsigned int> *i, bool color = true, bool tex = true);
+	MeshComponent(	std::weak_ptr<Entity> e, std::vector<float> v, std::vector<unsigned int> i, bool color = true, bool tex = true) :
+					MeshComponent::MeshComponent(e, &v, &i, color, tex) { };
+	MeshComponent(	std::weak_ptr<Entity> e, std::vector<float> *v, bool color = true, bool tex = true);
+	MeshComponent(	std::weak_ptr<Entity> e, std::vector<float> v, bool color = true, bool tex = true) :
+					MeshComponent::MeshComponent(e, &v, color, tex) { };
 	~MeshComponent();
 };
 

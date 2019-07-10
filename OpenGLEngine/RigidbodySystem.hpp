@@ -5,6 +5,7 @@
 
 #include "System.hpp"
 #include "PhysicsSubsystems.hpp"
+#include "Structs.hpp"
 
 
 class RigidbodyComponent;
@@ -19,20 +20,25 @@ public:
 private:
 	std::shared_ptr<RigidbodyComponent> rbptr;
 	std::shared_ptr<TransformComponent> tptr;
+	std::vector<structs::collision> collisions;
 	Time * time;
 	PhysicsSubsystems subsystems;
 
 	float lastStep;
 	void Step(float fixedDeltaTime);
 
-	void PerformMovement(float fixedDeltaTime);
+		void PerformMovement(float fixedDeltaTime);
 
-	void ApplyContinousForces();
+			void ApplyContinousForces();
 	
-	void CalculateDrag();
+			void ApplyDrag();
 
-	void CalculateDamping();
+			void ApplyDamping();
 
-	void CalculateFriction();
+		void ResolveCollisions();
+
+			void ResolveCollisionVelocities(int x);
+		
+			void ResolveCollisionOverlap(int x);
 };
 #endif // !_RIGIDBODYSYSTEM_HPP

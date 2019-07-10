@@ -2,6 +2,7 @@
 
 #include <iostream>
 
+#include "Structs.hpp"
 #include "Time.hpp"
 #include "EntityManager.hpp"
 #include "TransformComponent.hpp"
@@ -47,7 +48,7 @@ inline void RigidbodySystem::PerformMovement(float fixedDeltaTime)
 	}*/
 
 	ApplyContinousForces(); //apply forces that are applied over multiple frames stores in currentFrameForce
-	CalculateDrag(); //calculate our drag force, will counteract some of our currentFrameForce
+	ApplyDrag(); //calculate our drag force, will counteract some of our currentFrameForce
 
 	glm::vec3 currentFrameAcceleration = rbptr->constantAcceleration; //we don't want to affect constant acceleration
 	currentFrameAcceleration += rbptr->currentFrameForce * rbptr->inverseMass; //F = ma | a = F * (1 / m)
@@ -75,12 +76,71 @@ inline void RigidbodySystem::ApplyContinousForces()
 	}
 }
 
-inline void RigidbodySystem::CalculateDamping()
+inline void RigidbodySystem::ApplyDamping()
 {
 	rbptr->velocity *= rbptr->scaledDampingCoeff;
 }
 
-inline void RigidbodySystem::CalculateDrag()
+void RigidbodySystem::ResolveCollisions()
+{
+	
+	for (unsigned int x = 0; x < collisions.size(); ++x)
+	{
+		ResolveCollisionVelocities(x);
+		ResolveCollisionOverlap(x);
+	}
+}
+
+void RigidbodySystem::ResolveCollisionVelocities(int x)
+{
+	glm::vec3 impulseVector;
+	glm::vec3 combinedVelocityVector;
+	float seperatingForceScalar;
+	float totalInverseMass;
+	combinedVelocityVector = collisions[x].a->velocity;
+	//only add the second one if it exists
+	combinedVelocityVector = (collisions[x].b) ? collisions[x].b->velocity + combinedVelocityVector : combinedVelocityVector;
+	seperatingForceScalar = glm::dot(combinedVelocityVector, collisions[x].collisionNormal);
+	if (seperatingForceScalar > 0)//our seperating force should be negative as it should be pushing away from b rather than towards is
+	{
+		return;
+	}
+	seperatingForceScalar *= -2.0f * collisions[x].restitutionCoeff;
+	totalInverseMass = collisions[x].a->inverseMass;
+	totalInverseMass += (collisions[x].b) ? collisions[x].b->inverseMass : 0; //only add in the second mass if it exists
+	if (totalInverseMass <= 0) //if they both have infinite mass then there's no reason to apply force to either
+	{
+		return;
+	}
+	impulseVector = collisions[x].collisionNormal * seperatingForceScalar / totalInverseMass;
+	collisions[x].a->velocity += impulseVector * collisions[x].a->inverseMass;
+	if (collisions[x].b)
+	{
+		collisions[x].b->velocity += -impulseVector * collisions[x].b->inverseMass; //we want to apply the force in the other direction
+	}
+}
+
+void RigidbodySystem::ResolveCollisionOverlap(int x)
+{
+	float totalInverseMass;
+	glm::vec3 movementRequired;
+	if (collisions[x].overlapAmount <= 0) //if we aren't even overlapping why bother
+	{
+		return;
+	}
+	totalInverseMass = collisions[x].a->inverseMass;
+	totalInverseMass += collisions[x].b ? collisions[x].b->inverseMass : 0;
+	if (totalInverseMass <= 0)//if they both have inverse mass then just ignore their collision
+	{
+		return;
+	}
+	movementRequired = collisions[x].collisionNormal * (collisions[x].overlapAmount / totalInverseMass);
+
+	//collisions[x].a->
+
+}
+
+inline void RigidbodySystem::ApplyDrag()
 {
 	glm::vec3 dragForce = rbptr->velocity; //drag is based on velocity
 	float dragAmount = glm::length(dragForce);

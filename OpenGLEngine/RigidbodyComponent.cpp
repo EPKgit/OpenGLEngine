@@ -1,8 +1,12 @@
 #include "RigidbodyComponent.hpp"
 
-#include "Time.hpp"
+#include <assert.h>
 
-RigidbodyComponent::RigidbodyComponent(float f, glm::vec3 v, glm::vec3 a) : mass(f), velocity(v), constantAcceleration(a)
+#include "Time.hpp"
+#include "Entity.hpp"
+
+RigidbodyComponent::RigidbodyComponent(std::weak_ptr<Entity> e, float f, glm::vec3 v, glm::vec3 a) 
+	: Component(e), mass(f), velocity(v), constantAcceleration(a)
 {
 	type = constants::ComponentType::RigidbodyComponent;
 	currentFrameForce = { 0, 0, 0 };
@@ -10,6 +14,8 @@ RigidbodyComponent::RigidbodyComponent(float f, glm::vec3 v, glm::vec3 a) : mass
 	SetDampingCoeff(0.8f);
 	dragCoefficient1 = 0.4f;
 	dragCoefficient2 = 0.4f;
+	tptr = entity.lock()->getComp<TransformComponent>();
+	assert(!tptr.expired());
 }
 
 void RigidbodyComponent::ApplyForce(glm::vec3 direction, float amount, float duration)

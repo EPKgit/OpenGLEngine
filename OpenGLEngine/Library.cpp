@@ -66,7 +66,9 @@ std::shared_ptr<Entity> lib::CreateCubeEntity()
 		-0.5f,  0.5f,  0.5f,  0.0f, 0.0f,
 		-0.5f,  0.5f, -0.5f,  0.0f, 1.0f
 	};
-	std::shared_ptr <MeshComponent> mesh = std::make_shared<MeshComponent>(&vertices, false, true);
+	std::shared_ptr<Entity> e = EntityManager::GetInstance()->createEntity();
+	std::shared_ptr <MeshComponent> mesh = e->addComp<MeshComponent, std::vector<float> *, bool, bool>(&vertices, false, true);
+	e->addComp<TransformComponent>();
 	Texture t1("container.jpg");
 	Texture t2("awesomeface.png", GL_RGBA, GL_RGBA, true);
 	Shader s("BaseVertex.vert", "BaseFragment.frag");
@@ -76,10 +78,7 @@ std::shared_ptr<Entity> lib::CreateCubeEntity()
 	mesh->s.Use();
 	mesh->s.SetInt("texture1", 0);
 	mesh->s.SetInt("texture2", 1);
-
-	std::shared_ptr<Entity> e = EntityManager::GetInstance()->createEntity();
-	e->addComp<MeshComponent>(mesh);
-	e->addComp<TransformComponent>();
+	
 	return e;
 }
 

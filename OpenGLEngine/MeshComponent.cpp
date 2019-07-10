@@ -1,11 +1,12 @@
 #include "MeshComponent.hpp"
 
-MeshComponent::MeshComponent()
+MeshComponent::MeshComponent(std::weak_ptr<Entity> e) : Component(e)
 {
 	type = constants::ComponentType::MeshComponent;
 }
 
-MeshComponent::MeshComponent(std::vector<float> *v, std::vector<unsigned int> *i, bool color, bool tex) : MeshComponent::MeshComponent(v, color, tex)
+MeshComponent::MeshComponent(std::weak_ptr<Entity> e, std::vector<float> *v, std::vector<unsigned int> *i, bool color, bool tex) 
+	: MeshComponent::MeshComponent(e, v, color, tex)
 {
 	mType = MeshType::VertsPlusIndices;
 	std::move(i->begin(), i->end(), std::back_inserter(indices));
@@ -17,7 +18,7 @@ MeshComponent::MeshComponent(std::vector<float> *v, std::vector<unsigned int> *i
 	glBindVertexArray(VAO);//unbind our VAO just in case
 }
 
-MeshComponent::MeshComponent(std::vector<float> *v, bool color, bool tex) : MeshComponent::MeshComponent()
+MeshComponent::MeshComponent(std::weak_ptr<Entity> e, std::vector<float> *v, bool color, bool tex) : MeshComponent::MeshComponent(e)
 {
 	mType = MeshType::VertsOnly;
 	std::move(v->begin(), v->end(), std::back_inserter(verts));
