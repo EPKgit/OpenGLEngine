@@ -153,8 +153,12 @@
     <ClInclude Include="FollowComponent.hpp" />
     <ClInclude Include="FollowSystem.hpp" />
     <ClInclude Include="InputSystem.hpp" />
+    <ClInclude Include="InputComponent.hpp" />
     <ClInclude Include="Library.hpp" />
     <ClInclude Include="MeshComponent.hpp" />
+    <ClInclude Include="Network.hpp" />
+    <ClInclude Include="PlayerMovementComponent.hpp" />
+    <ClInclude Include="PlayerMovementSystem.hpp" />
     <ClInclude Include="RenderSystemFPS.hpp" />
     <ClInclude Include="RenderSystemThirdPerson.hpp" />
     <ClInclude Include="RigidbodyComponent.hpp" />
@@ -183,6 +187,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MeshComponent.cpp" />
     <ClCompile Include="PhysicsSubsystems.cpp" />
+    <ClCompile Include="PlayerMovementSystem.cpp" />
     <ClCompile Include="RenderSystemFPS.cpp" />
     <ClCompile Include="RenderSystemThirdPerson.cpp" />
     <ClCompile Include="RigidbodyComponent.cpp" />

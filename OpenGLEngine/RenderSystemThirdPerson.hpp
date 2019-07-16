@@ -16,10 +16,6 @@ class RenderSystemThirdPerson : public System
 public:
 	RenderSystemThirdPerson();
 	void Run(float);
-	void DoCameraMovement_FORDEBUG(glm::vec2 inputAxis, float deltaTime);
-	void DoCameraLook_FORDEBUG(glm::vec2 inputAxis, float deltaTime);
-	void OverwriteCameraPosition_FORDEBUG(glm::vec3 newPosition);
-	void OverwriteCameraDirection_FORDEBUG(glm::vec3 newRotation);
 private:
 	glm::mat4 model;
 	glm::mat4 view;
@@ -34,6 +30,8 @@ private:
 	std::shared_ptr<CameraComponent> cptr;
 	std::shared_ptr<TransformComponent> ctptr;
 	void CalculateViewMatrix();
-	void CalculateModelMatrix();
+	void CalculateModelMatrix(); 
+	void DoCameraMovement(glm::vec2 inputAxis, float deltaTime);
+	void DoCameraLook(glm::vec2 inputAxis, float deltaTime);
 };
 #endif // !_RENDERSYSTEM_HPP

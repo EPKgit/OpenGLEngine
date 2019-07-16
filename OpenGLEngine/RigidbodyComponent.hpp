@@ -31,7 +31,6 @@ public:
 	void SetInfiniteMass();
 	void SetMass(float f);
 	void SetDampingCoeff(float f);
-	
 private:
 };
 #endif // !_RIGIDBODYCOMPONENT_HPP

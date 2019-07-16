@@ -14,8 +14,8 @@ private:
 	EntityManager();
 	std::vector<std::shared_ptr<Entity>> entities;
 	unsigned int numEntities;
+	std::shared_ptr<Entity> singletonEntity;
 public:
-	
 	std::shared_ptr<Entity> createEntity();
 	std::shared_ptr<Entity> addEntity(Entity e);
 	bool deleteEntity(unsigned int i);
@@ -26,6 +26,7 @@ public:
 	template<class T, class ... rest>
 	std::vector<std::shared_ptr<Entity>> getEntitiesByComponents();
 
+	std::shared_ptr<Entity> getSingletonEntity();
 };
 
 template<class T>

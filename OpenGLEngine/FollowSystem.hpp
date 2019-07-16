@@ -12,7 +12,5 @@ public:
 	void Run(float deltaTime);
 
 private:
-	std::shared_ptr<FollowComponent> fptr;
-	std::shared_ptr<TransformComponent> tptr;
 };
 #endif

@@ -13,6 +13,7 @@
 #include "RigidbodyComponent.hpp"
 #include "FollowComponent.hpp"
 #include "SpringForceComponent.hpp"
+#include "InputComponent.hpp"
 
 class ComponentLookup
 {

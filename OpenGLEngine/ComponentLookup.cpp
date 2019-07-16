@@ -10,4 +10,5 @@ void ComponentLookup::SetupMap()
 	ComponentLookup::lookup[typeid(RigidbodyComponent)] = constants::ComponentType::RigidbodyComponent;
 	ComponentLookup::lookup[typeid(FollowComponent)] = constants::ComponentType::FollowComponent;
 	ComponentLookup::lookup[typeid(SpringForceComponent)] = constants::ComponentType::SpringForceComponent;
+	ComponentLookup::lookup[typeid(InputComponent)] = constants::ComponentType::InputComponent;
 }

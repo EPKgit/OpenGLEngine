@@ -13,6 +13,7 @@ public:
 		: Component(e), cameraOffset(cp), cameraDirection(cd)
 	{
 		type = constants::ComponentType::CameraComponent;
+		dirty = true;
 		Init(cp, cd);
 	}
 	void Init(glm::vec3 cp, glm::vec3 cd)
@@ -30,6 +31,10 @@ public:
 	}
 	glm::vec3 cameraOffset;
 	glm::vec3 cameraDirection;
+	glm::vec3 cameraRight;
+	glm::vec3 cameraUp;
+	glm::mat4 view;
+	bool dirty;
 	float pitch;
 	float yaw;
 	float cameraDistance;

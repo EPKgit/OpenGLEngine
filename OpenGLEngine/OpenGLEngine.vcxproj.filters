@@ -28,6 +28,12 @@
     <Filter Include="Source Files\DataStructures">
       <UniqueIdentifier>{540a6dea-6c1a-4107-9564-a89c8cdc898f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Miscelaneous">
+      <UniqueIdentifier>{fa32de60-d8c4-4351-8bda-b6e0c1b5ce55}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Networking">
+      <UniqueIdentifier>{b7fdeb25-9c6d-4d05-a5aa-9051903c8e10}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Image Include="awesomeface.png">
@@ -52,22 +58,10 @@
     <ClInclude Include="Constants.hpp">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="FollowComponent.hpp">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="FollowSystem.hpp">
-      <Filter>Source Files</Filter>
-    </ClInclude>
     <ClInclude Include="InputSystem.hpp">
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="Library.hpp">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Structs.hpp">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Time.hpp">
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="RigidbodyComponent.hpp">
@@ -127,12 +121,33 @@
     <ClInclude Include="PhysicsSubsystems.hpp">
       <Filter>Source Files\Physics</Filter>
     </ClInclude>
+    <ClInclude Include="FollowComponent.hpp">
+      <Filter>Source Files\Miscelaneous</Filter>
+    </ClInclude>
+    <ClInclude Include="FollowSystem.hpp">
+      <Filter>Source Files\Miscelaneous</Filter>
+    </ClInclude>
+    <ClInclude Include="Structs.hpp">
+      <Filter>Source Files\Miscelaneous</Filter>
+    </ClInclude>
+    <ClInclude Include="Time.hpp">
+      <Filter>Source Files\Miscelaneous</Filter>
+    </ClInclude>
+    <ClInclude Include="Network.hpp">
+      <Filter>Source Files\Networking</Filter>
+    </ClInclude>
+    <ClInclude Include="InputComponent.hpp">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerMovementComponent.hpp">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerMovementSystem.hpp">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Constants.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="FollowSystem.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="InputSystem.cpp">
@@ -142,12 +157,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Structs.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Time.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="RigidbodyComponent.cpp">
@@ -197,6 +206,18 @@
     </ClCompile>
     <ClCompile Include="PhysicsSubsystems.cpp">
       <Filter>Source Files\Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="FollowSystem.cpp">
+      <Filter>Source Files\Miscelaneous</Filter>
+    </ClCompile>
+    <ClCompile Include="Structs.cpp">
+      <Filter>Source Files\Miscelaneous</Filter>
+    </ClCompile>
+    <ClCompile Include="Time.cpp">
+      <Filter>Source Files\Miscelaneous</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerMovementSystem.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

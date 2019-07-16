@@ -12,6 +12,7 @@ namespace lib
 	std::shared_ptr<Entity> CreateCubeEntity();
 	std::shared_ptr<Entity> CreateCameraEntityFPS();
 	std::shared_ptr<Entity> CreateCameraEntityThirdPerson();
+	std::shared_ptr<Entity> CreatePlayerEntity();
 };
 
 

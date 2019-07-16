@@ -8,12 +8,20 @@
 #include <glm/glm.hpp>
 #include <glad/glad.h>
 
+#include "Constants.hpp"
+
 class Shader
 {
 public:
 	Shader() {};
-	Shader(const char * vFilename, const char * fFilename) { Setup(vFilename, fFilename); }
-	void Setup(const char * vFilename, const char * fFilename) { CreateMyShaderProgram(ID, vFilename, fFilename); }
+	Shader(const char * vFilename, const char * fFilename) 
+	{ 
+		Setup(vFilename, fFilename); 
+	}
+	void Setup(const char * vFilename, const char * fFilename)
+	{ 
+		CreateMyShaderProgram(ID, vFilename, fFilename); 
+	}
 	void SetBool(const char * name, const bool b) const;
 	void SetInt(const char * name, const int i) const;
 	void SetFloat(const char * name, const float f) const;

@@ -11,7 +11,6 @@
 
 RenderSystemThirdPerson::RenderSystemThirdPerson()
 {
-	projection = glm::perspective(glm::radians(constants::fieldOfView), constants::aspectRatio, constants::zNear, constants::zFar);
 	glEnable(GL_DEPTH_TEST);
 	cameraUp = { 0, 1, 0 };
 }
@@ -44,56 +43,55 @@ void RenderSystemThirdPerson::Run(float deltaTime)
 	glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-	std::vector<std::shared_ptr<Entity>> a = em->getEntitiesByComponents<CameraComponent, TransformComponent>();
-	if (a.size() < 1)
-	{
-		return;
-	}
-
-	cptr = a[0]->getComp<CameraComponent>(); //Assume for now that there is only ever one camera
-	ctptr = a[0]->getComp<TransformComponent>();
-
+	std::vector<std::shared_ptr<Entity>> cams = em->getEntitiesByComponents<CameraComponent, TransformComponent>();
 	entities = em->getEntitiesByComponents<MeshComponent, TransformComponent>();
-	for (unsigned int x = 0; x < entities.size(); ++x)
+	for (unsigned int x = 0; x < cams.size(); ++x)
 	{
-		mcptr = entities[x]->getComp<MeshComponent>();
-		mtptr = entities[x]->getComp<TransformComponent>();
-		mcptr->s.Use();
+		cptr = cams[x]->getComp<CameraComponent>();
+		ctptr = cams[x]->getComp<TransformComponent>();
 
-		CalculateModelMatrix();
-		CalculateViewMatrix();
 
-		//attach out matrices to our shader
-		mcptr->s.setMat4("model", model);
-		mcptr->s.setMat4("view", view);
-		mcptr->s.setMat4("projection", projection);
-
-		for (unsigned int x = 0; x < mcptr->textures.size(); ++x)
+		for (unsigned int y = 0; y < entities.size(); ++y)
 		{
-			glActiveTexture(GL_TEXTURE0 + x);
-			mcptr->textures[x].Use();
-		}
+			mcptr = entities[y]->getComp<MeshComponent>();
+			mtptr = entities[y]->getComp<TransformComponent>();
+			mcptr->s.Use();
 
-		glBindVertexArray(mcptr->VAO);
-		if (mcptr->mType == MeshType::VertsOnly)
-		{
-			glDrawArrays(GL_TRIANGLES, 0, mcptr->numElements);
-		}
-		else if (mcptr->mType == MeshType::VertsPlusIndices)
-		{
-			glDrawElements(GL_TRIANGLES, mcptr->numElements, GL_UNSIGNED_INT, 0);
+			CalculateModelMatrix();
+			CalculateViewMatrix();
+
+			//attach out matrices to our shader
+			mcptr->s.setMat4("model", model);
+			mcptr->s.setMat4("view", view);
+			mcptr->s.setMat4("projection", projection);
+
+			for (unsigned int x = 0; x < mcptr->textures.size(); ++x)
+			{
+				glActiveTexture(GL_TEXTURE0 + x);
+				mcptr->textures[x].Use();
+			}
+
+			glBindVertexArray(mcptr->VAO);
+			if (mcptr->mType == MeshType::VertsOnly)
+			{
+				glDrawArrays(GL_TRIANGLES, 0, mcptr->numElements);
+			}
+			else if (mcptr->mType == MeshType::VertsPlusIndices)
+			{
+				glDrawElements(GL_TRIANGLES, mcptr->numElements, GL_UNSIGNED_INT, 0);
+			}
 		}
 	}
 }
 
-void RenderSystemThirdPerson::DoCameraMovement_FORDEBUG(glm::vec2 inputAxis, float deltaTime)
+void RenderSystemThirdPerson::DoCameraMovement(glm::vec2 inputAxis, float deltaTime)
 {
 	ctptr->position += inputAxis.x * cameraRight * deltaTime;
 	cameraDirectionFlat = { cptr->cameraDirection.x, 0, cptr->cameraDirection.z };
 	cameraDirectionFlat = glm::normalize(cameraDirectionFlat);
 	ctptr->position += inputAxis.y * cameraDirectionFlat * deltaTime;
 }
-void RenderSystemThirdPerson::DoCameraLook_FORDEBUG(glm::vec2 inputAxis, float deltaTime)
+void RenderSystemThirdPerson::DoCameraLook(glm::vec2 inputAxis, float deltaTime)
 {
 	cptr->yaw += inputAxis.x * deltaTime * constants::DebugVariables::GetInstance()->lrSensitivity;
 	//cptr->pitch += inputAxis.y * deltaTime * constants::DebugVariables::GetInstance()->udSensitivity;
@@ -104,12 +102,4 @@ void RenderSystemThirdPerson::DoCameraLook_FORDEBUG(glm::vec2 inputAxis, float d
 	cptr->cameraOffset.z = -cos(cptr->yaw) * cptr->cameraDistance;
 	cptr->cameraDirection = ctptr->position - (ctptr->position + cptr->cameraOffset);
 	glm::normalize(cptr->cameraDirection);
-}
-void RenderSystemThirdPerson::OverwriteCameraPosition_FORDEBUG(glm::vec3 newPosition)
-{
-	ctptr->position = newPosition;
-}
-void RenderSystemThirdPerson::OverwriteCameraDirection_FORDEBUG(glm::vec3 newRotation)
-{
-	cptr->cameraDirection = newRotation;
 }

@@ -6,6 +6,7 @@ EntityManager::EntityManager()
 {
 	numEntities = 0;
 	ComponentLookup::SetupMap();
+	singletonEntity = createEntity();
 }
 
 std::shared_ptr<Entity> EntityManager::createEntity()
@@ -34,5 +35,10 @@ bool EntityManager::deleteEntity(unsigned int i)
 		}
 	}
 	return false;
+}
+
+std::shared_ptr<Entity> EntityManager::getSingletonEntity()
+{
+	return singletonEntity;
 }
 

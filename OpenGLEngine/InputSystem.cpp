@@ -1,89 +1,94 @@
-#include "InputSystem.hpp"
-
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
-#include "RenderSystemFPS.hpp"
-#include "RenderSystemThirdPerson.hpp"
+#include "InputSystem.hpp"
 
-InputSystem::InputSystem(RenderSystemFPS * _rs, GLFWwindow * _w) : rs(_rs), window(_w)
+#include "EntityManager.hpp"
+#include "InputComponent.hpp"
+
+InputSystem::InputSystem(GLFWwindow * _w) : window(_w)
 {
 	glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 	glfwSetCursorPos(window, 0, 0);
-	FPS = true;
-}
-
-
-InputSystem::InputSystem(RenderSystemThirdPerson * _rs, GLFWwindow * _w) : rs2(_rs), window(_w)
-{
-	glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
-	glfwSetCursorPos(window, 0, 0);
-	FPS = false;
+	em->getSingletonEntity()->addComp<InputComponent>();
+	keys =
+	{
+		{GLFW_KEY_W, InputMaps::W },
+		{GLFW_KEY_A, InputMaps::A },
+		{GLFW_KEY_S, InputMaps::S },
+		{GLFW_KEY_D, InputMaps::D },
+		{GLFW_KEY_SPACE, InputMaps::SPACE }
+	};
 }
 
 void InputSystem::Run(float deltaTime)
 {
-	//Looking
-	CaptureMouseInput(deltaTime);
+	input = em->getSingletonEntity()->getComp<InputComponent>();
+	//Check All Keys
+	if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
+	{
+		glfwSetWindowShouldClose(window, true);
+	}
+	for (auto k : keys)
+	{
+		CheckKey(k.first, k.second);
+	}
+	//Looking 
+	CaptureMouseInput();
 
 	//Moving
-	CheckAxis(GLFW_KEY_W, GLFW_KEY_A, GLFW_KEY_S, GLFW_KEY_D, inputAxis);
-	if (inputAxis.x != 0 || inputAxis.y != 0)
-	{
-		if (FPS)
-		{
-			rs->DoCameraMovement_FORDEBUG(inputAxis, deltaTime);
-		}
-		else
-		{
-			rs2->DoCameraMovement_FORDEBUG(inputAxis, deltaTime);
-		}
-	}
+	CaptureMoveInput();
+
 }
 
-void InputSystem::CaptureMouseInput(float deltaTime)
-{ //0/1 for fresh input, 2/3 for old input, 4/5 for diff
-	glfwGetCursorPos(window, &mousePosition[0], &mousePosition[1]);
-	mousePosition[4] = mousePosition[0] - mousePosition[2];//new minus old
-	mousePosition[5] = mousePosition[1] - mousePosition[3];
-	if (mousePosition[4] != 0 || mousePosition[5] != 0)
-	{
-		mousePosition[2] = mousePosition[0];
-		mousePosition[3] = mousePosition[1];
-		inputAxis.x = (float)(mousePosition[4]);
-		inputAxis.y = -(float)(mousePosition[5]);//mouse position is recorded from top to bottom so we need to reverse it
-	}
-	else
-	{
-		inputAxis = { 0, 0 };
-	}
-	if (FPS)
-	{
-		rs->DoCameraLook_FORDEBUG(inputAxis, deltaTime);
-	}
-	else
-	{
-		rs2->DoCameraLook_FORDEBUG(inputAxis, deltaTime);
-	}
-}
-
-void InputSystem::CheckAxis(int up, int left, int down, int right, glm::vec2 &o)
+void InputSystem::CheckKey(int key, int keyIndex)
 {
-	o = { 0, 0 };
-	if (glfwGetKey(window, up) == GLFW_PRESS)
+	int result = glfwGetKey(window, key);
+	switch (result)
 	{
-		o.y += 1;
+	case GLFW_PRESS:
+		input->downBits.set(keyIndex);
+		input->heldBits.set(keyIndex);
+		break;
+	case GLFW_RELEASE:
+		if (input->heldBits[keyIndex])
+		{
+			input->upBits.set(keyIndex);
+			input->downBits.reset(keyIndex);
+			input->heldBits.reset(keyIndex);
+		}
+		break;
+	case GLFW_REPEAT:
+		input->heldBits.set(keyIndex);
+		break;
+	default:
+		break;
 	}
-	if (glfwGetKey(window, down) == GLFW_PRESS)
+}
+
+void InputSystem::CaptureMouseInput()
+{ //0/1 for fresh input, 2/3 for old input, 4/5 for diff
+	glfwGetCursorPos(window, &input->mousePosition[0], &input->mousePosition[1]);
+	input->mousePosition[4] = input->mousePosition[0] - input->mousePosition[2];//new minus old
+	input->mousePosition[5] = input->mousePosition[1] - input->mousePosition[3];
+	if (input->mousePosition[4] != 0 || input->mousePosition[5] != 0)
 	{
-		o.y -= 1;
+		input->mousePosition[2] = input->mousePosition[0];
+		input->mousePosition[3] = input->mousePosition[1];
+		input->mouseAxis.x = (float)(input->mousePosition[4]);
+		input->mouseAxis.y = -(float)(input->mousePosition[5]);//mouse position is recorded from top to bottom so we need to reverse it
 	}
-	if (glfwGetKey(window, left) == GLFW_PRESS)
+	else
 	{
-		o.x -= 1;
+		input->mouseAxis = { 0, 0 };
 	}
-	if (glfwGetKey(window, right) == GLFW_PRESS)
-	{
-		o.x += 1;
-	}
+}
+
+void InputSystem::CaptureMoveInput()
+{
+	input->moveAxis = { 0, 0 };
+	input->moveAxis.y += input->heldBits[InputMaps::W];
+	input->moveAxis.y -= input->heldBits[InputMaps::S];
+	input->moveAxis.x += input->heldBits[InputMaps::D];
+	input->moveAxis.x -= input->heldBits[InputMaps::A];
 }

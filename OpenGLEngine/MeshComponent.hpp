@@ -28,6 +28,7 @@ public:
 	std::vector<unsigned int> indices;
 	std::vector<Texture> textures;
 	Shader s;
+	glm::mat4 model;
 	MeshComponent(	std::weak_ptr<Entity> e);
 	MeshComponent(	std::weak_ptr<Entity> e, std::vector<float> *v, std::vector<unsigned int> *i, bool color = true, bool tex = true);
 	MeshComponent(	std::weak_ptr<Entity> e, std::vector<float> v, std::vector<unsigned int> i, bool color = true, bool tex = true) :

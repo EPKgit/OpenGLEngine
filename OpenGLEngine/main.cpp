@@ -14,6 +14,7 @@
 #include "InputSystem.hpp"
 #include "FollowSystem.hpp"
 #include "RigidbodySystem.hpp"
+#include "PlayerMovementSystem.hpp"
 
 
 //Temp includes for testing
@@ -24,7 +25,7 @@
 
 void window_resize_callback(GLFWwindow* window, int width, int height)
 {
-	glViewport(0, 0, constants::screenWidth, constants::screenHeight);
+	glViewport(0, 0, constants::CameraVariables::GetInstance()->screenWidth, constants::CameraVariables::GetInstance()->screenHeight);
 }
 
 void GLFWstartup()
@@ -35,18 +36,10 @@ void GLFWstartup()
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 }
 
-void PROCESSINPUT_TEMP(GLFWwindow * window)
-{
-	if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
-	{
-		glfwSetWindowShouldClose(window, true);
-	}
-}
-
 void GameLoop(GLFWwindow * window)
 {
 	//std::shared_ptr<Entity> e = lib::CreateCameraEntityThirdPerson();
-	std::shared_ptr<Entity> e = lib::CreateCameraEntityFPS();
+	std::shared_ptr<Entity> e = lib::CreatePlayerEntity();
 	e->getComp<TransformComponent>()->position = { 0, 0, 2 };
 
 	//e = lib::CreateCubeEntity();
@@ -74,8 +67,9 @@ void GameLoop(GLFWwindow * window)
 	//RenderSystemThirdPerson rs;
 	RenderSystemFPS rs;
 	rs.Run(0);
-	InputSystem is(&rs, window);
-	RigidbodySystem  rbs;
+	InputSystem is(window);
+	PlayerMovementSystem pms;
+	RigidbodySystem rbs;
 	Time * t = Time::GetInstance();
 	char titleBuf[64];
 	while (!glfwWindowShouldClose(window))
@@ -83,9 +77,9 @@ void GameLoop(GLFWwindow * window)
 		deltaTime = t->Tick();
 		snprintf(titleBuf, 64, "OpenGLEngine FPS:%.2f", 1.0f / deltaTime);
 		glfwSetWindowTitle(window, titleBuf);
-		PROCESSINPUT_TEMP(window);
 
 		is.Run(deltaTime);
+		pms.Run(deltaTime);
 		rbs.Run(deltaTime);
 		rs.Run(deltaTime);
 
@@ -98,7 +92,7 @@ void GameLoop(GLFWwindow * window)
 int main()
 {
 	GLFWstartup();
-	GLFWwindow * window = glfwCreateWindow(constants::screenWidth, constants::screenHeight, "Testing", nullptr, nullptr);
+	GLFWwindow * window = glfwCreateWindow(constants::CameraVariables::GetInstance()->screenWidth, constants::CameraVariables::GetInstance()->screenHeight, "Testing", nullptr, nullptr);
 	if (window == nullptr)
 	{
 		glfwTerminate();
@@ -110,7 +104,7 @@ int main()
 		std::cout << "Failed to initialize GLAD" << std::endl;
 		return -1;
 	}
-	glViewport(0, 0, constants::screenWidth, constants::screenHeight);
+	glViewport(0, 0, constants::CameraVariables::GetInstance()->screenWidth, constants::CameraVariables::GetInstance()->screenHeight);
 	glfwSetFramebufferSizeCallback(window, window_resize_callback);
 
 	GameLoop(window);
