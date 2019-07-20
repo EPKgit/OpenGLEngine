@@ -23,11 +23,12 @@ public:
 		type = constants::ComponentType::InputComponent;
 		mouseAxis = { 0, 0 };
 		moveAxis = { 0, 0 };
+		memset(mousePosition, 0, sizeof(double) * 4);
 	}
 	std::bitset<InputMaps::COUNT> heldBits; //whether the button is down on this frame
 	std::bitset<InputMaps::COUNT> downBits; //buttons that were pressed this frame
 	std::bitset<InputMaps::COUNT> upBits; //buttons that were resleased this frame
-	double mousePosition[6];//0/1 for fresh input, 2/3 for old input, 4/5 for diff
+	double mousePosition[4];//0/1 for fresh input, 2/3 for old input
 	glm::vec2 mouseAxis;
 	glm::vec2 moveAxis;
 private:

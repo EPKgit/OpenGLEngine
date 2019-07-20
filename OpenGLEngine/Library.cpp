@@ -9,7 +9,7 @@
 #include "TransformComponent.hpp"
 #include "EntityManager.hpp"
 #include "CameraComponent.hpp"
-#include "PlayerMovementComponent.hpp"
+#include "PlayerControllerComponent.hpp"
 
 inline float lib::DegToRadf(float degreeMeasure)
 {
@@ -86,7 +86,7 @@ std::shared_ptr<Entity> lib::CreateCubeEntity()
 std::shared_ptr<Entity> lib::CreatePlayerEntity()
 {
 	std::shared_ptr<Entity> e = lib::CreateCameraEntityFPS();
-	e->addComp<PlayerMovementComponent>();
+	e->addComp<PlayerControllerComponent>();
 	return e;
 }
 

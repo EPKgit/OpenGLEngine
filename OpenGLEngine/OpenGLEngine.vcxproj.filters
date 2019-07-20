@@ -91,12 +91,6 @@
     <ClInclude Include="MeshComponent.hpp">
       <Filter>Source Files\Rendering</Filter>
     </ClInclude>
-    <ClInclude Include="RenderSystemFPS.hpp">
-      <Filter>Source Files\Rendering</Filter>
-    </ClInclude>
-    <ClInclude Include="RenderSystemThirdPerson.hpp">
-      <Filter>Source Files\Rendering</Filter>
-    </ClInclude>
     <ClInclude Include="Shader.hpp">
       <Filter>Source Files\Shaders/Images</Filter>
     </ClInclude>
@@ -139,11 +133,14 @@
     <ClInclude Include="InputComponent.hpp">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="PlayerMovementComponent.hpp">
+    <ClInclude Include="PlayerControllerSystem.hpp">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="PlayerMovementSystem.hpp">
+    <ClInclude Include="PlayerControllerComponent.hpp">
       <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderSystem.hpp">
+      <Filter>Source Files\Rendering</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -186,12 +183,6 @@
     <ClCompile Include="MeshComponent.cpp">
       <Filter>Source Files\Rendering</Filter>
     </ClCompile>
-    <ClCompile Include="RenderSystemFPS.cpp">
-      <Filter>Source Files\Rendering</Filter>
-    </ClCompile>
-    <ClCompile Include="RenderSystemThirdPerson.cpp">
-      <Filter>Source Files\Rendering</Filter>
-    </ClCompile>
     <ClCompile Include="Shader.cpp">
       <Filter>Source Files\Shaders/Images</Filter>
     </ClCompile>
@@ -216,8 +207,11 @@
     <ClCompile Include="Time.cpp">
       <Filter>Source Files\Miscelaneous</Filter>
     </ClCompile>
-    <ClCompile Include="PlayerMovementSystem.cpp">
+    <ClCompile Include="PlayerControllerSystem.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="RenderSystem.cpp">
+      <Filter>Source Files\Rendering</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

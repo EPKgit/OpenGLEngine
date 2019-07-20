@@ -69,14 +69,15 @@ void InputSystem::CheckKey(int key, int keyIndex)
 void InputSystem::CaptureMouseInput()
 { //0/1 for fresh input, 2/3 for old input, 4/5 for diff
 	glfwGetCursorPos(window, &input->mousePosition[0], &input->mousePosition[1]);
-	input->mousePosition[4] = input->mousePosition[0] - input->mousePosition[2];//new minus old
-	input->mousePosition[5] = input->mousePosition[1] - input->mousePosition[3];
-	if (input->mousePosition[4] != 0 || input->mousePosition[5] != 0)
+	double dX = input->mousePosition[0] - input->mousePosition[2];
+	double dY = input->mousePosition[1] - input->mousePosition[3];
+	if (dX != 0 || dY != 0)
 	{
 		input->mousePosition[2] = input->mousePosition[0];
 		input->mousePosition[3] = input->mousePosition[1];
-		input->mouseAxis.x = (float)(input->mousePosition[4]);
-		input->mouseAxis.y = -(float)(input->mousePosition[5]);//mouse position is recorded from top to bottom so we need to reverse it
+		input->mouseAxis.x = (float)dX;
+		input->mouseAxis.y = -(float)dY;//mouse position is recorded from top to bottom so we need to reverse it
+		input->mouseAxis = glm::normalize(input->mouseAxis);
 	}
 	else
 	{
@@ -91,4 +92,8 @@ void InputSystem::CaptureMoveInput()
 	input->moveAxis.y -= input->heldBits[InputMaps::S];
 	input->moveAxis.x += input->heldBits[InputMaps::D];
 	input->moveAxis.x -= input->heldBits[InputMaps::A];
+	if (input->moveAxis.x != 0 || input->moveAxis.y != 0)
+	{
+		input->moveAxis = glm::normalize(input->moveAxis);
+	}
 }

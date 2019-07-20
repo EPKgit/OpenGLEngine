@@ -9,12 +9,11 @@
 #include "Time.hpp"
 
 //Systems
-#include "RenderSystemFPS.hpp"
-#include "RenderSystemThirdPerson.hpp"
+#include "RenderSystem.hpp"
 #include "InputSystem.hpp"
 #include "FollowSystem.hpp"
 #include "RigidbodySystem.hpp"
-#include "PlayerMovementSystem.hpp"
+#include "PlayerControllerSystem.hpp"
 
 
 //Temp includes for testing
@@ -64,12 +63,16 @@ void GameLoop(GLFWwindow * window)
 
 
 	float deltaTime;
-	//RenderSystemThirdPerson rs;
-	RenderSystemFPS rs;
-	rs.Run(0);
+	std::vector<System *> systems;
+	RenderSystem rs;
 	InputSystem is(window);
-	PlayerMovementSystem pms;
+	PlayerControllerSystem pms;
 	RigidbodySystem rbs;
+	systems.push_back(&rs);
+	systems.push_back(&is);
+	systems.push_back(&pms);
+	systems.push_back(&rbs);
+
 	Time * t = Time::GetInstance();
 	char titleBuf[64];
 	while (!glfwWindowShouldClose(window))
@@ -78,10 +81,10 @@ void GameLoop(GLFWwindow * window)
 		snprintf(titleBuf, 64, "OpenGLEngine FPS:%.2f", 1.0f / deltaTime);
 		glfwSetWindowTitle(window, titleBuf);
 
-		is.Run(deltaTime);
-		pms.Run(deltaTime);
-		rbs.Run(deltaTime);
-		rs.Run(deltaTime);
+		for (auto x : systems)
+		{
+			x->Run(deltaTime);
+		}
 
 		glfwSwapBuffers(window);
 		glfwPollEvents();

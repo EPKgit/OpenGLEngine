@@ -50,14 +50,15 @@ namespace constants
 
 	const char* const defaultPort = "25408";
 	const char* const defaultHostName = "127.0.0.1";
+
+	const float defaultVertSensitivity = 250.0f;
+	const float defaultHorizSensitivity = 250.0f;
 	
 	class DebugVariables : public Singleton<DebugVariables>
 	{
 	public:
 		bool wireframe = false;
 		bool printCameraInfo = false;
-		float udSensitivity = 25.0f;
-		float lrSensitivity = 25.0f;
 	};
 };
 

@@ -157,10 +157,9 @@
     <ClInclude Include="Library.hpp" />
     <ClInclude Include="MeshComponent.hpp" />
     <ClInclude Include="Network.hpp" />
-    <ClInclude Include="PlayerMovementComponent.hpp" />
-    <ClInclude Include="PlayerMovementSystem.hpp" />
-    <ClInclude Include="RenderSystemFPS.hpp" />
-    <ClInclude Include="RenderSystemThirdPerson.hpp" />
+    <ClInclude Include="PlayerControllerComponent.hpp" />
+    <ClInclude Include="PlayerControllerSystem.hpp" />
+    <ClInclude Include="RenderSystem.hpp" />
     <ClInclude Include="RigidbodyComponent.hpp" />
     <ClInclude Include="RigidbodySystem.hpp" />
     <ClInclude Include="Shader.hpp" />
@@ -187,9 +186,8 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MeshComponent.cpp" />
     <ClCompile Include="PhysicsSubsystems.cpp" />
-    <ClCompile Include="PlayerMovementSystem.cpp" />
-    <ClCompile Include="RenderSystemFPS.cpp" />
-    <ClCompile Include="RenderSystemThirdPerson.cpp" />
+    <ClCompile Include="PlayerControllerSystem.cpp" />
+    <ClCompile Include="RenderSystem.cpp" />
     <ClCompile Include="RigidbodyComponent.cpp" />
     <ClCompile Include="RigidbodySystem.cpp" />
     <ClCompile Include="Shader.cpp" />
