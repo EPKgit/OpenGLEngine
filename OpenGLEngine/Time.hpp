@@ -19,7 +19,7 @@ private:
 class Time : public Singleton<Time>
 {
 public:
-	float GetCurrentTime();
+	float GetCurrentTotalTime();
 	float GetCurrentDeltaTime();
 	float Tick();
 private:

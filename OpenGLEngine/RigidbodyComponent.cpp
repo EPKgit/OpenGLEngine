@@ -23,7 +23,7 @@ void RigidbodyComponent::ApplyForce(glm::vec3 direction, float amount, float dur
 	direction = glm::normalize(direction);
 	if (duration > 0)
 	{
-		forces.push_back(std::make_pair((amount / mass) * direction, (Time::GetInstance()->GetCurrentTime() + duration)));
+		forces.push_back(std::make_pair((amount / mass) * direction, (Time::GetInstance()->GetCurrentTotalTime() + duration)));
 	}
 	else
 	{

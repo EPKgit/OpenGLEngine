@@ -12,13 +12,13 @@
 RigidbodySystem::RigidbodySystem()
 {
 	time = Time::GetInstance();
-	lastStep = time->GetCurrentTime();
+	lastStep = time->GetCurrentTotalTime();
 }
 
 void RigidbodySystem::Run(float deltaTime)
 {
 	entities = em->getEntitiesByComponents<RigidbodyComponent, TransformComponent>();
-	while (lastStep < time->GetCurrentTime())
+	while (lastStep < time->GetCurrentTotalTime())
 	{
 		Step(constants::fixedTimeStep);
 		lastStep += constants::fixedTimeStep;
@@ -64,7 +64,7 @@ inline void RigidbodySystem::ApplyContinousForces()
 {
 	for (auto x = rbptr->forces.begin(); x != rbptr->forces.end();)
 	{
-		if ((*x).second > time->GetCurrentTime())
+		if ((*x).second > time->GetCurrentTotalTime())
   		{
 			rbptr->currentFrameForce += (*x).first;
 			++x;

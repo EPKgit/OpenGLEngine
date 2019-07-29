@@ -21,6 +21,7 @@ namespace constants
 		InputComponent,
 		FollowComponent,
 		PlayerMovement,
+		Network,
 		
 		COUNT
 	};
@@ -42,14 +43,15 @@ namespace constants
 		float aspectRatio = (float)screenWidth / screenHeight;
 		glm::mat4 projection;
 	};
-	
-	//
 
 	const float fixedTimeStep = 0.01f;
 	const glm::vec3 gravity = { 0, -10.0f, 0 };
 
 	const char* const defaultPort = "25408";
 	const char* const defaultHostName = "127.0.0.1";
+	const int NUMBER_OF_ATTEMPTS = 20;
+	const int networkTicksPerSecond = 20;
+	const float timePerNetworkTick = 1.0f / networkTicksPerSecond;
 
 	const float defaultVertSensitivity = 250.0f;
 	const float defaultHorizSensitivity = 250.0f;

@@ -157,6 +157,7 @@
     <ClInclude Include="Library.hpp" />
     <ClInclude Include="MeshComponent.hpp" />
     <ClInclude Include="Network.hpp" />
+    <ClInclude Include="NetworkSystem.hpp" />
     <ClInclude Include="PlayerControllerComponent.hpp" />
     <ClInclude Include="PlayerControllerSystem.hpp" />
     <ClInclude Include="RenderSystem.hpp" />
@@ -185,6 +186,10 @@
     <ClCompile Include="Library.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MeshComponent.cpp" />
+    <ClCompile Include="Network.cpp" />
+    <ClCompile Include="NetworkComponent.cpp" />
+    <ClCompile Include="NetworkComponent.hpp" />
+    <ClCompile Include="NetworkSystem.cpp" />
     <ClCompile Include="PhysicsSubsystems.cpp" />
     <ClCompile Include="PlayerControllerSystem.cpp" />
     <ClCompile Include="RenderSystem.cpp" />

@@ -1,6 +1,6 @@
 #include "Time.hpp"
 
-float Time::GetCurrentTime()
+float Time::GetCurrentTotalTime()
 {
 	return totalTime;
 }

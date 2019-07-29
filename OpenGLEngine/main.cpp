@@ -1,9 +1,6 @@
 #include <iostream>
 #include <array>
 
-#include <glad/glad.h>
-#include <GLFW/glfw3.h>
-
 #include "Constants.hpp"
 #include "Library.hpp"
 #include "Time.hpp"
@@ -14,6 +11,7 @@
 #include "FollowSystem.hpp"
 #include "RigidbodySystem.hpp"
 #include "PlayerControllerSystem.hpp"
+#include "NetworkSystem.hpp"
 
 
 //Temp includes for testing
@@ -21,6 +19,12 @@
 #include "Entity.hpp"
 #include "TransformComponent.hpp"
 #include "SpringForceComponent.hpp"
+
+
+#include <glad/glad.h>
+#include <GLFW/glfw3.h>
+
+
 
 void window_resize_callback(GLFWwindow* window, int width, int height)
 {
@@ -68,8 +72,10 @@ void GameLoop(GLFWwindow * window)
 	InputSystem is(window);
 	PlayerControllerSystem pms;
 	RigidbodySystem rbs;
+	NetworkSystem ns;
 	systems.push_back(&rs);
 	systems.push_back(&is);
+	systems.push_back(&ns);
 	systems.push_back(&pms);
 	systems.push_back(&rbs);
 
