@@ -16,15 +16,15 @@ NetworkSystem::NetworkSystem()
 	network::ResolveAddrinfo(nptr->addr, &nptr->result);
 	nptr->runMethod = &NetworkSystem::HandleConnecting;//we start by trying to connect a few times
 										//if that fails then we become the host
+	network::AttemptConnection(nptr->socket, nptr->result);
 }
 
 void NetworkSystem::Run(float deltaTime)
 {
-	
 	std::shared_ptr<NetworkComponent> nptr = em->getSingletonEntity()->getComp<NetworkComponent>();
 	while (nptr->lastNetworkTick < Time::GetInstance()->GetCurrentTotalTime())
 	{
-		printf("____________________________\nNetwork Run at %f vs %f\n\n", nptr->lastNetworkTick, Time::GetInstance()->GetCurrentTotalTime());
+		//printf("____________________________\nNetwork Run at %f vs %f\n\n", nptr->lastNetworkTick, Time::GetInstance()->GetCurrentTotalTime());
 		nptr->lastNetworkTick += constants::timePerNetworkTick;
 		(*this.*nptr->runMethod)(nptr);
 	}
@@ -47,22 +47,22 @@ void NetworkSystem::CreateLobby(std::shared_ptr<NetworkComponent> nptr)
 
 void NetworkSystem::HandleConnecting(std::shared_ptr<NetworkComponent> nptr)
 {
-	int result = network::AttemptConnection(nptr->socket, nptr->result, nptr->connectionAttempts++);
-	switch (result)
+	if (nptr->startedConnectionTime + constants::timeToWaitForConnection < Time::GetInstance()->GetCurrentTotalTime())
 	{
-	case network::ConnectionReturn::Success:
-		nptr->isConnecting = false;
-		nptr->runMethod = &NetworkSystem::HandleClient;
-		break;
-	case network::ConnectionReturn::Failure:
-		break;
-	case network::ConnectionReturn::Timeout:
 		nptr->isHost = true;
 		CreateLobby(nptr);
 		nptr->isConnecting = false;
 		nptr->runMethod = &NetworkSystem::HandleHost;
-		break;
+		return;
 	}
+	else if (network::IsConnectedStatus(nptr->socket, nptr->fds))
+	{
+		printf("made connection to the server\n");
+		nptr->isConnecting = false;
+		nptr->runMethod = &NetworkSystem::HandleClient;
+		return;
+	}
+	printf("no response\n");
 }
 
 void NetworkSystem::HandleHost(std::shared_ptr<NetworkComponent> nptr)
@@ -88,20 +88,20 @@ void NetworkSystem::RecieveData(std::shared_ptr<NetworkComponent> nptr)
 	}
 	if (retval == 0)
 	{
-		printf("No input this frame\n");
+		//printf("No input this frame\n");
 		return;
 	}
-	for (int x = 0; x < nptr->fds.fd_count; ++x)
+	for (int x = 0; x < nptr->connectedSockets.size(); ++x)
 	{
-		if (FD_ISSET(x, &nptr->fds))
+		if (FD_ISSET(nptr->connectedSockets[x], &nptr->fds))
 		{
-			if (x == nptr->socket)
+			if (nptr->connectedSockets[x] == nptr->socket)
 			{
 				AcceptConnection(nptr);
 			}
 			else
 			{
-				printf("would be reading data on %d\n", x);
+				printf("would be reading data on %d\n", nptr->connectedSockets[x]);
 			}
 		}
 	}
@@ -111,7 +111,7 @@ void NetworkSystem::SendData(std::shared_ptr<NetworkComponent> nptr)
 {
 	for (int x = 0; x < nptr->connectedSockets.size(); ++x)
 	{
-		if (x == nptr->socket) //don't send data to ourselves
+		if (nptr->connectedSockets[x] == nptr->socket) //don't send data to ourselves
 		{
 			continue;
 		}
@@ -121,10 +121,11 @@ void NetworkSystem::SendData(std::shared_ptr<NetworkComponent> nptr)
 
 void NetworkSystem::AcceptConnection(std::shared_ptr<NetworkComponent> nptr)
 {
+	network::AcceptConnection(nptr->socket, nptr->connectedSockets);
 	printf("would accept connection here\n");
 }
 
 void NetworkSystem::HandleClient(std::shared_ptr<NetworkComponent> nptr)
 {
-
+	printf("client work\n");
 }

@@ -49,8 +49,8 @@ namespace constants
 	const glm::vec3 gravity = { 0, -10.0f, 0 };
 
 	const char* const defaultPort = "25408";
-	const char* const defaultHostName = "localhost";
-	const int NUMBER_OF_ATTEMPTS = 20;
+	const char* const defaultHostName = "127.0.0.1";
+	const int timeToWaitForConnection = 2.0f;
 	const int networkTicksPerSecond = 10;
 	const float timePerNetworkTick = 1.0f / networkTicksPerSecond;
 

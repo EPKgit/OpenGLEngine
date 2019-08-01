@@ -1,1 +1,7 @@
-﻿  OpenGLEngine.vcxproj -> E:\GitHub\OpenGLEngine\Debug\OpenGLEngine.exe
+﻿  NetworkSystem.cpp
+e:\github\openglengine\openglengine\constants.hpp(53): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\program files (x86)\windows kits\10\include\10.0.17763.0\shared\minwindef.h(130): warning C4005: 'APIENTRY': macro redefinition
+  e:\github\openglengine\include\glad\glad.h(32): note: see previous definition of 'APIENTRY'
+e:\github\openglengine\openglengine\networksystem.cpp(94): warning C4018: '<': signed/unsigned mismatch
+e:\github\openglengine\openglengine\networksystem.cpp(112): warning C4018: '<': signed/unsigned mismatch
+  OpenGLEngine.vcxproj -> E:\GitHub\OpenGLEngine\Debug\OpenGLEngine.exe

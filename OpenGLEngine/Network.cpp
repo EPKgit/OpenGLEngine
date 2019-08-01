@@ -92,9 +92,9 @@ namespace network
 		printf("Succesfully listened on port\n");
 	}
 
-	void AcceptConnection(SOCKET &listeningSocket, SOCKET &clientSocket, sockaddr * address, int * len)
+	void AcceptConnection(SOCKET &listeningSocket, std::vector<SOCKET> &v, sockaddr * address, int * len)
 	{
-		clientSocket = accept(listeningSocket, address, len);
+		SOCKET clientSocket = accept(listeningSocket, address, len);
 		if (clientSocket == INVALID_SOCKET)
 		{
 			printf("accept failed: %d\n", WSAGetLastError());
@@ -102,46 +102,52 @@ namespace network
 			WSACleanup();
 			throw NetworkError::AcceptConnection;
 		}
+		v.push_back(clientSocket);
 		printf("Succesfully accepted connection\n");
 	}
 
-	namespace //anonymous namespace so that attempting to connect won't use our internal function
+	//Call this once to start the connection attempt
+	int AttemptConnection(SOCKET &connectionSocket, ADDRINFOA *result)
 	{
-		bool ConnectToServer(SOCKET &connectionSocket, ADDRINFOA *result)
+		for (PADDRINFOA ptr = result; ptr != NULL; ptr = ptr->ai_next)
 		{
-			int err = connect(connectionSocket, result->ai_addr, result->ai_addrlen);
-			if (err == SOCKET_ERROR)
+			CreateSocket(connectionSocket, ptr);
+			SetSocketNonblocking(connectionSocket);
+			printf("Attemping to connect\n");
+			int retval = connect(connectionSocket, result->ai_addr, result->ai_addrlen);
+			int err = WSAGetLastError();
+			if (retval == 0)
 			{
-				closesocket(connectionSocket);
-				//WSACleanup();
-				connectionSocket = INVALID_SOCKET;
-				printf("Unable to connect to server with err:%d!\n", WSAGetLastError());
-				return false;
+				printf("Succesfully connected to the server\n");
+				freeaddrinfo(result);//successful connection
+				return ConnectionReturn::Success;
 			}
-			printf("Succesfully connected to the server\n");
-			return true;
+			if (retval == SOCKET_ERROR)
+			{
+				if (err == EINPROGRESS || err == WSAEWOULDBLOCK)
+				{
+					return ConnectionReturn::InProgress;
+				}
+				printf("Unable to connect to server with err:%d!\n", err);
+				closesocket(connectionSocket);
+				connectionSocket = INVALID_SOCKET;
+			}
 		}
+		return ConnectionReturn::Error;
 	}
 
-	int AttemptConnection(SOCKET &connectionSocket, ADDRINFOA *result, int attemptNo)
+	bool IsConnectedStatus(SOCKET &socket, fd_set &fds)
 	{
-		if (attemptNo < constants::NUMBER_OF_ATTEMPTS)
+		FD_ZERO(&fds);
+		FD_SET(socket, &fds);
+		struct timeval timeout;
+		timeout.tv_sec = 0;
+		int retval = select(1, NULL, &fds, NULL, &timeout);
+		if (retval == 1)
 		{
-			int x = 0;
-			for (PADDRINFOA ptr = result; ptr != NULL; ptr = ptr->ai_next)
-			{
-				CreateSocket(connectionSocket, ptr);
-				SetSocketNonblocking(connectionSocket);
-				printf("Attemping to connect #%d-%d\n", attemptNo, ++x);
-				if (ConnectToServer(connectionSocket, ptr))
-				{
-					freeaddrinfo(result);//successful connection
-					return ConnectionReturn::Success;
-				}
-			}
-			return ConnectionReturn::Failure;
+			return true;
 		}
-		return ConnectionReturn::Timeout;
+		return false;
 	}
 
 	void ShutdownSocket(SOCKET &socket, int closeType)

@@ -9,6 +9,7 @@
 #include <iphlpapi.h>
 #include <stdio.h>
 #include <iostream>
+#include <vector>
 #undef NOMINMAX
 
 
@@ -49,10 +50,12 @@ namespace network
 
 	void ListenSocket(SOCKET &listeningSocket);
 
-	void AcceptConnection(SOCKET &listeningSocket, SOCKET &clientSocket, sockaddr *address = NULL, int *len = NULL);
+	void AcceptConnection(SOCKET &listeningSocket, std::vector<SOCKET> &v, sockaddr *address = NULL, int *len = NULL);
 
-	enum ConnectionReturn { Success = 1, Failure = 0, Timeout = -1};
-	int AttemptConnection(SOCKET &connectionSocket, ADDRINFOA *result, int attemptNo);
+	enum ConnectionReturn { Success = 1, InProgress = 0, Error = -1};
+	int AttemptConnection(SOCKET &connectionSocket, ADDRINFOA *result);
+
+	bool IsConnectedStatus(SOCKET &socket, fd_set &fds);
 
 	void ShutdownSocket(SOCKET &socket, int closeType = SD_SEND);
 

@@ -16,10 +16,9 @@ public:
 	NetworkComponent(std::weak_ptr<Entity> e) : Component(e)
 	{
 		type = constants::ComponentType::NetworkComponent;
-		connectionAttempts = 0;
 		isConnecting = true;
 		isHost = false;
-		lastNetworkTick = Time::GetInstance()->GetCurrentTotalTime();
+		startedConnectionTime = lastNetworkTick = Time::GetInstance()->GetCurrentTotalTime();
 	}
 	WSADATA wsaData;
 	SOCKET socket;
@@ -30,7 +29,7 @@ public:
 	bool isHost;
 	bool isConnecting;
 	void(NetworkSystem::*runMethod)(std::shared_ptr<NetworkComponent> nptr);
-	int connectionAttempts;
+	float startedConnectionTime;
 	float lastNetworkTick;
 	
 private:
