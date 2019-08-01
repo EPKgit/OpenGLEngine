@@ -2,9 +2,11 @@
 #define _NETWORKCOMPONENT_HPP
 
 #include <vector>
+#define NOMINMAX
 #include <winsock2.h>
-
+#undef NOMINMAX
 #include "Component.hpp"
+#include "Time.hpp"
 
 class NetworkSystem;
 
@@ -13,10 +15,11 @@ class NetworkComponent : public Component
 public:
 	NetworkComponent(std::weak_ptr<Entity> e) : Component(e)
 	{
-		type = constants::ComponentType::Network;
+		type = constants::ComponentType::NetworkComponent;
 		connectionAttempts = 0;
 		isConnecting = true;
 		isHost = false;
+		lastNetworkTick = Time::GetInstance()->GetCurrentTotalTime();
 	}
 	WSADATA wsaData;
 	SOCKET socket;

@@ -13,7 +13,15 @@ public:
 private:
 	void CreateLobby(std::shared_ptr<NetworkComponent> nptr);
 	void HandleConnecting(std::shared_ptr<NetworkComponent> nptr);
+
 	void HandleHost(std::shared_ptr<NetworkComponent> nptr);
+	
+		void RecieveData(std::shared_ptr<NetworkComponent> nptr);
+
+		void SendData(std::shared_ptr<NetworkComponent> nptr);
+
+		void AcceptConnection(std::shared_ptr<NetworkComponent> nptr);
+
 	void HandleClient(std::shared_ptr<NetworkComponent> nptr);
 	
 };

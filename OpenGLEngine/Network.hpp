@@ -1,12 +1,16 @@
 #ifndef _NETWORK_HPP
 #define _NETWORK_HPP
 
+
+#define NOMINMAX
 #include <winsock2.h>
 #include <windows.h>
 #include <ws2tcpip.h>
 #include <iphlpapi.h>
 #include <stdio.h>
 #include <iostream>
+#undef NOMINMAX
+
 
 #include "Constants.hpp"
 
@@ -23,7 +27,8 @@ namespace network
 		BindSocket,
 		ListenSocket,
 		AcceptConnection,
-		ShutdownSendingSide
+		ShutdownSendingSide,
+		Nonblocking
 	};
 
 	void StartWindowsSockets(WSAData &wsaData);
@@ -36,7 +41,9 @@ namespace network
 							const PCSTR portNum = constants::defaultPort);
 	void FreeAddrinfo(ADDRINFO *addr);
 
-	void CreateSocket(SOCKET &newSocket, ADDRINFOA &result);
+	void CreateSocket(SOCKET &newSocket, ADDRINFOA *result);
+
+	void SetSocketNonblocking(SOCKET &socket);
 
 	void BindSocket(SOCKET &listeningSocket, ADDRINFOA &result);
 
@@ -48,6 +55,8 @@ namespace network
 	int AttemptConnection(SOCKET &connectionSocket, ADDRINFOA *result, int attemptNo);
 
 	void ShutdownSocket(SOCKET &socket, int closeType = SD_SEND);
+
+	void CloseSocket(SOCKET &socket);
 }
 
 

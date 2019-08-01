@@ -2,26 +2,7 @@
 
 namespace network
 {
-	namespace
-	{
-		bool ConnectToServer(SOCKET &connectionSocket, ADDRINFOA *result)
-		{
-			int err = connect(connectionSocket, result->ai_addr, result->ai_addrlen);
-			if (err == SOCKET_ERROR)
-			{
-				closesocket(connectionSocket);
-				connectionSocket = INVALID_SOCKET;
-			}
-			if (connectionSocket == INVALID_SOCKET)
-			{
-				printf("Unable to connect to server!\n");
-				WSACleanup();
-				return false;
-			}
-			printf("Succesfully connected to the server\n");
-			return true;
-		}
-	}
+	
 	void StartWindowsSockets(WSAData &wsaData)
 	{
 		int err = WSAStartup(MAKEWORD(2, 2), &wsaData);
@@ -60,17 +41,28 @@ namespace network
 		freeaddrinfo(addr);
 	}
 
-	void CreateSocket(SOCKET &newSocket, ADDRINFOA &result)
+	void CreateSocket(SOCKET &newSocket, ADDRINFOA *result)
 	{
-		newSocket = socket(result.ai_family, result.ai_socktype, result.ai_protocol);
+		newSocket = socket(result->ai_family, result->ai_socktype, result->ai_protocol);
 		if (newSocket == INVALID_SOCKET)
 		{
 			printf("Error at socket(): %ld\n", WSAGetLastError());
-			freeaddrinfo(&result);
+			freeaddrinfo(result);
 			WSACleanup();
 			throw NetworkError::CreateSocket;
 		}
 		printf("Succesfully created socket\n");
+	}
+
+	void SetSocketNonblocking(SOCKET &socket)
+	{
+		u_long mode = 1; //nonblocking mode
+		int err = ioctlsocket(socket, FIONBIO, &mode);
+		if (err != NO_ERROR)
+		{
+			printf("Error setting the socket to be nonblocking\n");
+			throw NetworkError::Nonblocking;
+		}
 	}
 
 	void BindSocket(SOCKET &listeningSocket, ADDRINFOA &result)
@@ -113,21 +105,41 @@ namespace network
 		printf("Succesfully accepted connection\n");
 	}
 
-	int AttemptConnection(SOCKET &connectionSocket, ADDRINFOA * result, int attemptNo)
+	namespace //anonymous namespace so that attempting to connect won't use our internal function
+	{
+		bool ConnectToServer(SOCKET &connectionSocket, ADDRINFOA *result)
+		{
+			int err = connect(connectionSocket, result->ai_addr, result->ai_addrlen);
+			if (err == SOCKET_ERROR)
+			{
+				closesocket(connectionSocket);
+				//WSACleanup();
+				connectionSocket = INVALID_SOCKET;
+				printf("Unable to connect to server with err:%d!\n", WSAGetLastError());
+				return false;
+			}
+			printf("Succesfully connected to the server\n");
+			return true;
+		}
+	}
+
+	int AttemptConnection(SOCKET &connectionSocket, ADDRINFOA *result, int attemptNo)
 	{
 		if (attemptNo < constants::NUMBER_OF_ATTEMPTS)
 		{
 			int x = 0;
 			for (PADDRINFOA ptr = result; ptr != NULL; ptr = ptr->ai_next)
 			{
+				CreateSocket(connectionSocket, ptr);
+				SetSocketNonblocking(connectionSocket);
 				printf("Attemping to connect #%d-%d\n", attemptNo, ++x);
 				if (ConnectToServer(connectionSocket, ptr))
 				{
 					freeaddrinfo(result);//successful connection
 					return ConnectionReturn::Success;
 				}
-				return ConnectionReturn::Failure;
 			}
+			return ConnectionReturn::Failure;
 		}
 		return ConnectionReturn::Timeout;
 	}
@@ -143,5 +155,10 @@ namespace network
 			throw NetworkError::ShutdownSendingSide;
 		}
 		printf("Succesfully closed sending side of socket\n");
+	}
+
+	void CloseSocket(SOCKET &socket)
+	{
+		closesocket(socket);
 	}
 }

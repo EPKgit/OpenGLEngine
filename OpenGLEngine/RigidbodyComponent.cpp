@@ -37,6 +37,7 @@ void RigidbodyComponent::SetInfiniteMass()
 	inverseMass = 0;
 	mass = std::numeric_limits<float>::max();
 }
+
 void RigidbodyComponent::SetMass(float f)
 {
 	mass = f;

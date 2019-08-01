@@ -21,7 +21,7 @@ namespace constants
 		InputComponent,
 		FollowComponent,
 		PlayerMovement,
-		Network,
+		NetworkComponent,
 		
 		COUNT
 	};
@@ -35,8 +35,8 @@ namespace constants
 		{
 			projection = glm::perspective(glm::radians(fieldOfView), aspectRatio, zNear, zFar);
 		}
-		unsigned int screenHeight = (int)(768 * 2.5);
-		unsigned int screenWidth = (int)(1024 * 2.5);
+		unsigned int screenHeight = (int)(768 * 0.5);
+		unsigned int screenWidth = (int)(1024 * 0.5);
 		float fieldOfView = 90.0f;
 		float zNear = 0.1f;
 		float zFar = 100.0f;
@@ -44,13 +44,14 @@ namespace constants
 		glm::mat4 projection;
 	};
 
-	const float fixedTimeStep = 0.01f;
+	const int numberOfFixedStepsPerSecond = 50;
+	const float fixedTimeStep = 1.0f / numberOfFixedStepsPerSecond;
 	const glm::vec3 gravity = { 0, -10.0f, 0 };
 
 	const char* const defaultPort = "25408";
-	const char* const defaultHostName = "127.0.0.1";
+	const char* const defaultHostName = "localhost";
 	const int NUMBER_OF_ATTEMPTS = 20;
-	const int networkTicksPerSecond = 20;
+	const int networkTicksPerSecond = 10;
 	const float timePerNetworkTick = 1.0f / networkTicksPerSecond;
 
 	const float defaultVertSensitivity = 250.0f;

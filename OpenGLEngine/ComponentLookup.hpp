@@ -14,6 +14,7 @@
 #include "FollowComponent.hpp"
 #include "SpringForceComponent.hpp"
 #include "InputComponent.hpp"
+#include "NetworkComponent.hpp"
 
 class ComponentLookup
 {

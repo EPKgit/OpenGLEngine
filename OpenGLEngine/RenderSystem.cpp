@@ -51,7 +51,7 @@ void RenderSystem::Run(float deltaTime)
 		{
 			ctptr = cams[x]->getComp<TransformComponent>();
 			cptr->dirty = false;
-			std::cout << "recomputing view matrix\n";
+			//std::cout << "recomputing view matrix\n";
 			CalculateViewMatrix(); //pre generate all of our view matricies but only if the direction has changed since last time
 		}
 	}
