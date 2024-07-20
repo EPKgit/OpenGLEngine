@@ -18,7 +18,8 @@ class SpringForceComponent : public Component
 {
 public:
 	SpringForceComponent(std::weak_ptr<Entity> e, std::shared_ptr<TransformComponent> p, float sf = 1.0f, float rl = 1.0f)
-		:	Component(e), stype(SpringType::Connected), partner(p), springForce(sf), restingLength(rl)
+		:	Component(e), stype(SpringType::Connected), partner(p), springForce(sf), restingLength(rl),
+			anchor(glm::vec3(0, 0, 0))
 	{
 		type = constants::ComponentType::SpringForceComponent;
 	}

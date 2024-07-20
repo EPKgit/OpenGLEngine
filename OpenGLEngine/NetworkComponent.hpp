@@ -16,19 +16,17 @@ public:
 	NetworkComponent(std::weak_ptr<Entity> e) : Component(e)
 	{
 		type = constants::ComponentType::NetworkComponent;
-		isConnecting = true;
-		isHost = false;
 		startedConnectionTime = lastNetworkTick = Time::GetInstance()->GetCurrentTotalTime();
 	}
-	WSADATA wsaData;
-	SOCKET socket;
-	ADDRINFOA addr;
-	ADDRINFOA *result;
-	fd_set fds;
+	WSADATA wsaData = WSADATA();
+	SOCKET socket = SOCKET();
+	ADDRINFOA addr = ADDRINFOA();
+	ADDRINFOA *result = nullptr;
+	fd_set fds = fd_set();
 	std::vector<SOCKET> connectedSockets;
-	bool isHost;
-	bool isConnecting;
-	void(NetworkSystem::*runMethod)(std::shared_ptr<NetworkComponent> nptr);
+	bool isHost = false;
+	bool isConnecting = true;
+	void(NetworkSystem::*runMethod)(std::shared_ptr<NetworkComponent> nptr) = nullptr;
 	float startedConnectionTime;
 	float lastNetworkTick;
 	

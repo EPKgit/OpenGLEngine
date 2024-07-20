@@ -37,7 +37,8 @@ public:
 	void Use();
 	unsigned int GetID();
 private:
-	unsigned int ID;
+	unsigned int ID = std::numeric_limits<unsigned int>::max();
+
 	std::string ReadShaderFile(const char * filename);
 	bool SetupShader(unsigned int &i, const char * filename, GLenum shaderType);
 	bool SetupShaderProgram(unsigned int &i, unsigned int shaderArr[], int n);

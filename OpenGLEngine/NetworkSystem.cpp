@@ -91,7 +91,7 @@ void NetworkSystem::RecieveData(std::shared_ptr<NetworkComponent> nptr)
 		//printf("No input this frame\n");
 		return;
 	}
-	for (int x = 0; x < nptr->connectedSockets.size(); ++x)
+	for (size_t x = 0; x < nptr->connectedSockets.size(); ++x)
 	{
 		if (FD_ISSET(nptr->connectedSockets[x], &nptr->fds))
 		{
@@ -109,7 +109,7 @@ void NetworkSystem::RecieveData(std::shared_ptr<NetworkComponent> nptr)
 
 void NetworkSystem::SendData(std::shared_ptr<NetworkComponent> nptr)
 {
-	for (int x = 0; x < nptr->connectedSockets.size(); ++x)
+	for (size_t x = 0; x < nptr->connectedSockets.size(); ++x)
 	{
 		if (nptr->connectedSockets[x] == nptr->socket) //don't send data to ourselves
 		{

@@ -10,8 +10,8 @@ Texture::Texture(const char * filename, unsigned int storageFormat /*= GL_RGB*/,
 {
 	int width, height, nrChannels;
 	unsigned char *data;
-	glGenTextures(1, &texture);//generate an ID for our texture
-	glBindTexture(GL_TEXTURE_2D, texture);
+	glGenTextures(1, &textureId);//generate an ID for our texture
+	glBindTexture(GL_TEXTURE_2D, textureId);
 
 	// set texture wrapping to GL_REPEAT (default wrapping method)
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
@@ -37,10 +37,10 @@ Texture::Texture(const char * filename, unsigned int storageFormat /*= GL_RGB*/,
 
 void Texture::Use()
 {
-	glBindTexture(GL_TEXTURE_2D, texture);
+	glBindTexture(GL_TEXTURE_2D, textureId);
 }
 
-unsigned int Texture::GetID()
+unsigned int Texture::GetId()
 {
-	return texture;
+	return textureId;
 }

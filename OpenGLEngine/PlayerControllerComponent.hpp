@@ -8,7 +8,7 @@ class PlayerControllerComponent : public Component
 public:
 	PlayerControllerComponent(std::weak_ptr<Entity> e) : Component(e)
 	{
-		movementSpeed = 1;
+		movementSpeed = 5;
 		hSens = constants::defaultHorizSensitivity;
 		vSens = constants::defaultVertSensitivity;
 	}

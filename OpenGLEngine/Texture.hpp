@@ -8,9 +8,9 @@ class Texture
 public:
 	Texture(const char * filename, unsigned int = GL_RGB, unsigned int = GL_RGB, bool = false);
 	void Use();
-	unsigned int GetID();
+	unsigned int GetId();
 private:
-	unsigned int texture;
+	unsigned int textureId = 0;
 };
 
 #endif // !_TEXTURE_HPP

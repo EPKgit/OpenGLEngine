@@ -6,12 +6,12 @@
 #include "Time.hpp"
 
 //Systems
+#include "NetworkSystem.hpp"
 #include "RenderSystem.hpp"
 #include "InputSystem.hpp"
 #include "FollowSystem.hpp"
 #include "RigidbodySystem.hpp"
 #include "PlayerControllerSystem.hpp"
-#include "NetworkSystem.hpp"
 
 
 //Temp includes for testing
@@ -45,14 +45,14 @@ void GameLoop(GLFWwindow * window)
 	std::shared_ptr<Entity> e = lib::CreatePlayerEntity();
 	e->getComp<TransformComponent>()->position = { 0, 0, 2 };
 
-	//e = lib::CreateCubeEntity();
-	//e->getComp<TransformComponent>()->scale.z = 100;
-	//e->getComp<TransformComponent>()->scale.x = 100;
-	//e->getComp<TransformComponent>()->scale.y = 0.5;
-	//e->getComp<TransformComponent>()->position.y = -1;
-	//e->getComp<MeshComponent>()->textures.clear();
-	//std::shared_ptr<RigidbodyComponent> rb = e->addComp<RigidbodyComponent>();
-	//rb->SetInfiniteMass();
+	e = lib::CreateCubeEntity();
+	e->getComp<TransformComponent>()->scale.z = 100;
+	e->getComp<TransformComponent>()->scale.x = 100;
+	e->getComp<TransformComponent>()->scale.y = 0.5;
+	e->getComp<TransformComponent>()->position.y = -1;
+	e->getComp<MeshComponent>()->textures.clear();
+	std::shared_ptr<RigidbodyComponent> rb = e->addComp<RigidbodyComponent>();
+	rb->SetInfiniteMass();
 
 	e = lib::CreateCubeEntity();
 	e->addComp<RigidbodyComponent>();
